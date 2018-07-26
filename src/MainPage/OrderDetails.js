@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Segment } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 import Order from "./Order"
 
@@ -13,7 +13,7 @@ export default class OrderDetails extends Component {
         return (
             <React.Fragment>
                 <Segment.Group>
-                    <Segment>Patient Name: {this.props.order.patientName}</Segment>
+                    <Segment color='teal'>Patient Name: {this.props.order.patientName}</Segment>
                     <Segment.Group horizontal>
                         <Segment>{this.props.order.dr}</Segment>
                         <Segment>Optician: {this.props.order.username}</Segment>
@@ -53,6 +53,9 @@ export default class OrderDetails extends Component {
                     <Segment>Estimated Ship Date: {this.props.order.shipDate}</Segment>
                     <Segment>Estimated Arrival Date: {this.props.order.arrivalDate}</Segment>
                 </Segment.Group>
+                <Button onClick={this.back}>
+                    Back
+                </Button>
             </React.Fragment>
         )
 

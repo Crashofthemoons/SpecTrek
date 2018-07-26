@@ -4,7 +4,7 @@ import { Form } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 import Order from "./Order"
 import { Button, Card, Image } from 'semantic-ui-react'
-
+import '../App.css';
 
 export default class MainPage extends Component {
 
