@@ -6,6 +6,7 @@ import Login from "./Login/Login"
 import { Route, Redirect } from "react-router-dom"
 import APIManager from "./APIManager"
 import Order from "./MainPage/Order"
+import OrderDetails from "./MainPage/OrderDetails"
 import { Button, Card, Image } from 'semantic-ui-react'
 
 class ApplicationViews extends Component {
@@ -17,7 +18,7 @@ class ApplicationViews extends Component {
   componentDidMount() {
     const _state = {}
     let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
-    APIManager.getData("orders")
+    APIManager.getData("orders?_expand=user")
     .then(orders => _state.orders = orders)
     .then(_state.currentUser = cUser.id)
     .then(() =>{
@@ -43,8 +44,8 @@ class ApplicationViews extends Component {
         <Route exact path="/order" render={(props) => {
           return <Order {...props} order={props.location.state}/>
         }} />
-        <Route path="/order/:orderId" render={(props) => {
-            return <Order {...props} order={props.location.state}/>
+        <Route path="/order/orderdetails" render={(props) => {
+            return <OrderDetails {...props} order={props.location.state}/>
         }} />
       </React.Fragment>
     );

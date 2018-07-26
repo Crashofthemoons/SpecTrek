@@ -50,8 +50,8 @@
       "add": "",
       "pdOd": "25",
       "pdOs": "25",
-      "oc/segOd": "20",
-      "oc/segOs": "20",
+      "ocsegOd": "20",
+      "ocsegOs": "20",
       "id": 1
     },
     {
@@ -84,8 +84,8 @@
       "add": "",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "18",
-      "oc/segOs": "18",
+      "ocsegOd": "18",
+      "ocsegOs": "18",
       "id": 2
     },
     {
@@ -118,8 +118,8 @@
       "add": "+2.00",
       "pdOd": "31",
       "pdOs": "31",
-      "oc/segOd": "19",
-      "oc/segOs": "19",
+      "ocsegOd": "19",
+      "ocsegOs": "19",
       "id": 3
     },
     {
@@ -152,8 +152,8 @@
       "add": "",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 4
     },
     {
@@ -186,8 +186,8 @@
       "add": "+2.75",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 5
     },
     {
@@ -220,8 +220,8 @@
       "add": "+1.50",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 6
     },
     {
@@ -254,8 +254,8 @@
       "add": "",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 7
     },
     {
@@ -288,8 +288,8 @@
       "add": "",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 8
     },
     {
@@ -322,8 +322,8 @@
       "add": "",
       "pdOd": "30",
       "pdOs": "30",
-      "oc/segOd": "17",
-      "oc/segOs": "17",
+      "ocsegOd": "17",
+      "ocsegOs": "17",
       "id": 9
     }
   ]

@@ -2,31 +2,32 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Button, Card, Image } from 'semantic-ui-react'
 import APIManager from "../APIManager"
+import OrderDetails from "./OrderDetails"
 
-const Order = ({ order, currentUser, }) => {
-    // render() {
+export default class Order extends Component {
+    render() {
     return (
         <React.Fragment>
-            <Card id={order.id}>
+            <Card id={this.props.order.id}>
                 <Card.Content>
                     {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
                     <Card.Header>
-                        Order Status: {order.orderStatus}</Card.Header>
-                    <Card.Header>{order.patientName}</Card.Header>
-                    <Card.Meta>Order Date: {order.orderDate}</Card.Meta>
-                    <Card.Meta>Estimated Ship Date: {order.shipDate}</Card.Meta>
-                    <Card.Meta>Estimated Arrival Date: {order.arrivalDate}</Card.Meta>
+                        Order Status: {this.props.order.orderStatus}</Card.Header>
+                    <Card.Header>{this.props.order.patientName}</Card.Header>
+                    <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
+                    <Card.Meta>Estimated Ship Date: {this.props.order.shipDate}</Card.Meta>
+                    <Card.Meta>Estimated Arrival Date: {this.props.order.arrivalDate}</Card.Meta>
                     <Card.Description>
-                        Frame Name: {order.frameName}</Card.Description>
-                    <Card.Description>{order.lensDesign} {order.lensMaterial} {order.lensCoating}</Card.Description>
+                        Frame Name: {this.props.order.frameName}</Card.Description>
+                    <Card.Description>{this.props.order.lensDesign} {this.props.order.lensMaterial} {this.props.order.lensCoating}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <div className='ui two buttons'>
-                        <Button basic color='green'>
-                            <Link className="card-link"
+                        <Button basic color='teal'>
+                            <Link
                                 to={{
-                                    pathname: "/order/${order.id}",
-                                    state: { order, currentUser}
+                                    pathname: "/order/orderdetails",
+                                    state: this.props.order
                                 }}>
                                 Details
                             </Link>
@@ -39,7 +40,6 @@ const Order = ({ order, currentUser, }) => {
             </Card>
         </React.Fragment>
     )
-    // }
+    }
 }
 
-export default Order
