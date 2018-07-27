@@ -7,22 +7,10 @@
       "id": 1
     },
     {
-      "username": "Randal-Stevens",
+      "username": "Mandy-Stevens",
       "password": "opticnerve",
       "roll": "optician",
       "id": 2
-    },
-    {
-      "username": "Robert-Duvall",
-      "password": "glasses",
-      "roll": "optician",
-      "id": 3
-    },
-    {
-      "username": "Robert-Duvall",
-      "password": "glasses",
-      "roll": "optician",
-      "id": 4
     }
   ],
   "orders": [

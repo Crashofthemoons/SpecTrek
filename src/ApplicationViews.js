@@ -8,6 +8,7 @@ import APIManager from "./APIManager"
 import Order from "./MainPage/Order"
 import OrderDetails from "./MainPage/OrderDetails"
 import { Button, Card, Image } from 'semantic-ui-react'
+import NewOrder from "./MainPage/NewOrder"
 
 
 class ApplicationViews extends Component {
@@ -45,6 +46,9 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/order/orderdetails" render={(props) => {
             return <OrderDetails {...props} order={props.location.state}/>
+        }} />
+        <Route path="/neworder" render={(props) => {
+            return <NewOrder {...props} order={props.location.state}/>
         }} />
       </React.Fragment>
     );
