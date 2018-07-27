@@ -9,18 +9,17 @@ import Order from "./MainPage/Order"
 import OrderDetails from "./MainPage/OrderDetails"
 import { Button, Card, Image } from 'semantic-ui-react'
 
+
 class ApplicationViews extends Component {
   state = {
     currentUser: "",
     orders: []
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const _state = {}
-    let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
-    APIManager.getData("orders?_expand=user")
+    APIManager.getData("orders")
     .then(orders => _state.orders = orders)
-    .then(_state.currentUser = cUser.id)
     .then(() =>{
       this.setState(_state)
     })
@@ -36,7 +35,7 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route exact path="/" render={(props) => {
           if (this.isAuthenticated()) {
-            return <MainPage {...props} orders={this.state.orders} currentUser={this.state.currentUser} />
+            return <MainPage {...props} orders={this.state.orders} />
           } else {
             return <Login />
           }

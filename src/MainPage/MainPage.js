@@ -8,6 +8,17 @@ import '../App.css';
 
 export default class MainPage extends Component {
 
+    state = {
+        currentUser: ""
+    }
+
+
+    componentWillMount() {
+        let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
+            this.setState({
+                currentUser: cUser.id
+            })
+    }
 
     render() {
         return (
@@ -15,7 +26,7 @@ export default class MainPage extends Component {
                 <Card.Group>
                     {
                         this.props.orders.map(order =>
-                            <Order key={order.id} order={order} currentUser={this.props.currentUser}>
+                            <Order key={order.id} order={order} currentUser={this.currentUser}>
                                 {order}
                             </Order>
                         )
