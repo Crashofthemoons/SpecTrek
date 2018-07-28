@@ -9,6 +9,14 @@ export default class OrderDetails extends Component {
     back = () => {
         this.props.history.push("/")
     }
+
+    componentDidMount =() => {
+        APIManager.getData("orders?_expand=user")
+        .then(users => {
+            console.log(users)
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -16,7 +24,7 @@ export default class OrderDetails extends Component {
                     <Segment color='teal'>Patient Name: {this.props.order.patientName}</Segment>
                     <Segment.Group horizontal>
                         <Segment>{this.props.order.dr}</Segment>
-                        <Segment>Optician: {this.props.order.username}</Segment>
+                        <Segment>Optician: {this.props.order.user}</Segment>
                     </Segment.Group>
                     <Segment.Group>
                         <Segment>Lab Status: {this.props.order.orderStatus}</Segment>
