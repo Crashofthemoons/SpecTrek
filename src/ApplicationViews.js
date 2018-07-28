@@ -18,11 +18,9 @@ class ApplicationViews extends Component {
   }
 
   componentWillMount() {
-    const _state = {}
-    APIManager.getData("orders")
-    .then(orders => _state.orders = orders)
-    .then(() =>{
-      this.setState(_state)
+    APIManager.getData("orders?_sort=orderDate&_order=asc")
+    .then(orders =>{
+      this.setState({orders: orders})
     })
   }
 
@@ -48,7 +46,7 @@ class ApplicationViews extends Component {
             return <OrderDetails {...props} order={props.location.state}/>
         }} />
         <Route path="/neworder" render={(props) => {
-            return <NewOrder {...props} order={props.location.state}/>
+            return <NewOrder {...props} order={this.state.orders}/>
         }} />
       </React.Fragment>
     );

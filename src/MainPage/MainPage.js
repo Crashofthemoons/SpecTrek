@@ -32,7 +32,7 @@ export default class MainPage extends Component {
                         <Link
                             to={{
                                 pathname: "/neworder",
-                                state: { currentUser: this.state}
+                                state: {currentUser: this.state.currentUser}
                             }}>
                             New Order
                         </Link>
