@@ -41,7 +41,7 @@ export default class MainPage extends Component {
                     <Card.Group style={{ marginTop: '7em' }}>
                         {
                             this.props.orders.map(order =>
-                                <Order key={order.id} order={order} currentUser={this.currentUser}>
+                                <Order key={order.id} order={order} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
                                     {order}
                                 </Order>
                             )

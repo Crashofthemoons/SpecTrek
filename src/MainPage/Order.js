@@ -32,7 +32,7 @@ export default class Order extends Component {
                                 Details
                             </Link>
                         </Button>
-                        <Button basic color='red'>
+                        <Button onClick={()=> this.props.deleteOrder(this.props.order.id)} basic color='red'>
                             Delete
                         </Button>
                     </div>

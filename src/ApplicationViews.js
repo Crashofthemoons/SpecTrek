@@ -24,6 +24,16 @@ class ApplicationViews extends Component {
     })
   }
 
+  deleteOrder = (id) => {
+    APIManager.deleteData("orders", id)
+    .then(() => {
+      APIManager.getData("orders?_sort=orderDate&_order=asc")
+      .then(orders =>{
+        this.setState({orders: orders})
+      })
+    })
+  }
+
   isAuthenticated = () =>
     localStorage.getItem("SpecTrek") !== null ||
     sessionStorage.getItem("SpecTrek") !== null;
@@ -34,7 +44,7 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route exact path="/" render={(props) => {
           if (this.isAuthenticated()) {
-            return <MainPage {...props} orders={this.state.orders} />
+            return <MainPage {...props} deleteOrder={this.deleteOrder} orders={this.state.orders} />
           } else {
             return <Login />
           }
