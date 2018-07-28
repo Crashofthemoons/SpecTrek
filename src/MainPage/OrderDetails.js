@@ -10,13 +10,6 @@ export default class OrderDetails extends Component {
         this.props.history.push("/")
     }
 
-    componentDidMount =() => {
-        APIManager.getData("orders?_expand=user")
-        .then(users => {
-            console.log(users)
-        })
-    }
-
     render() {
         return (
             <React.Fragment>

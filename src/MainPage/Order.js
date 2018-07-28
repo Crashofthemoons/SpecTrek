@@ -5,6 +5,7 @@ import APIManager from "../APIManager"
 import OrderDetails from "./OrderDetails"
 
 export default class Order extends Component {
+
     render() {
     return (
         <React.Fragment>
