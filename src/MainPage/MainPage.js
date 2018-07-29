@@ -16,7 +16,8 @@ export default class MainPage extends Component {
     componentWillMount() {
         let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
         this.setState({
-            currentUser: cUser.id
+            currentUser: cUser.id,
+            roll: cUser.roll
         })
     }
 
@@ -36,6 +37,9 @@ export default class MainPage extends Component {
                             }}>
                             New Order
                         </Link>
+                    </Menu.Item>
+                    <Menu.Item position="right">
+                        {this.state.roll}
                     </Menu.Item>
                 </Menu>
                     <Card.Group style={{ marginTop: '7em' }}>

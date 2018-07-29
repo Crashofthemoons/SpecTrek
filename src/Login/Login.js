@@ -7,7 +7,7 @@ import APIManager from "../APIManager"
 export default class Login extends Component {
     state = {
         username: "",
-        password: "",
+        roll: "",
         id: ""
     };
 
@@ -29,7 +29,8 @@ export default class Login extends Component {
             .then(()=>{
                 localStorage.setItem("SpecTrek", JSON.stringify({
                     username: this.state.username,
-                    id: this.state.id
+                    id: this.state.id,
+                    roll: "Optician"
                 }))
             })
             .then(() => {
@@ -43,7 +44,7 @@ export default class Login extends Component {
             let newUser = {
                 username: this.state.username,
                 password: this.state.password,
-                roll: "optician"
+                roll: "Optician"
             }
 
             APIManager.addData("users", newUser)
