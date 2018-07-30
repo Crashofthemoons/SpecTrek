@@ -35,9 +35,7 @@ export default class Order extends Component {
             <Card id={this.props.order.id} className={thisOrder}>
                 <Card.Content>
                     {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
-                    <Card.Header>
-                        Order Status: {this.props.order.orderStatus}</Card.Header>
-                    <Card.Header>{this.props.order.patientName}</Card.Header>
+                    <Card.Header>{this.props.order.patientName} - {this.props.order.orderStatus}</Card.Header>
                     <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
                     <Card.Meta>Estimated Ship Date: {this.props.order.shipDate}</Card.Meta>
                     <Card.Meta>Estimated Arrival Date: {this.props.order.arrivalDate}</Card.Meta>

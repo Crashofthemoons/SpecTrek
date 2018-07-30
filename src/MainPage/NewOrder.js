@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Button, Form, Label } from 'semantic-ui-react'
+import { Button, Form, Label, Divider, Menu, Image } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 
 export default class NewOrder extends Component {
@@ -139,20 +139,27 @@ render() {
 
     return (
         <React.Fragment>
-            <Form>
+            <Menu fixed='top' inverted>
+                        <Menu.Item as='a' header onClick={this.back}>
+                            <Image id="logo" size='tiny' srcSet='../Images/spec-trek_circle.png' style={{ marginRight: '1.5em' }} />
+                            Spec Trek
+                        </Menu.Item>
+            </Menu>
+            <Form style={{ marginTop: '7em' }}>
                 <Form.Group>
                     <Form.Input id="patientName" onChange={this.handleFieldChange} label='Patient name' placeholder='Patient Name' width={6} />
                     <Form.Input id="dr" onChange={this.handleFieldChange} label='Doctor' placeholder='Doctor' width={6} />
                 </Form.Group>
                 <Form.Group>
-                    <Label>Lens:</Label>
-                    <Form.Select id="lensMaterial" onChange={this.handleSelectChange} options={materials} placeholder='Material' width={4} value={lensMaterial} />
-                    <Form.Select id="lensCoating" onChange={this.handleSelectChange} options={coatings} placeholder='Coatings' width={4} value={lensCoating} />
-                    <Form.Select id="tint" onChange={this.handleSelectChange} options={tints} placeholder='Tint' width={4} value={tint} />
-                    <Form.Select id="lensDesign" onChange={this.handleSelectChange} options={design} placeholder='Lens Design' width={4} value={lensDesign} />
+                    <Form.Select id="lensMaterial" onChange={this.handleSelectChange} options={materials} placeholder='Material' width={5} value={lensMaterial} />
+                    <Form.Select id="lensCoating" onChange={this.handleSelectChange} options={coatings} placeholder='Coatings' width={5} value={lensCoating} />
                 </Form.Group>
                 <Form.Group>
-                    <Label>OD:</Label>
+                    <Form.Select id="tint" onChange={this.handleSelectChange} options={tints} placeholder='Tint' width={5} value={tint} />
+                    <Form.Select id="lensDesign" onChange={this.handleSelectChange} options={design} placeholder='Lens Design' width={5} value={lensDesign} />
+                </Form.Group>
+                <Form.Group>
+                {/* <Label horizontal>OD:</Label> */}
                     <Form.Input id="sphereOd" onChange={this.handleFieldChange} placeholder='OD Sphere' width={2} />
                     <Form.Input id="cylOd" onChange={this.handleFieldChange} placeholder='OD Cylinder' width={2} />
                     <Form.Input id="axisOd" onChange={this.handleFieldChange} placeholder='OD Axis' width={2} />
@@ -161,7 +168,7 @@ render() {
                     <Form.Input id="pdOd" onChange={this.handleFieldChange} placeholder='OD PD' width={2} />
                 </Form.Group>
                 <Form.Group>
-                    <Label>OS:</Label>
+                {/* <Label horizontal>OS:</Label> */}
                     <Form.Input id="sphereOs" onChange={this.handleFieldChange} placeholder='OS Sphere' width={2} />
                     <Form.Input id="cylOs" onChange={this.handleFieldChange} placeholder='OS Cylinder' width={2} />
                     <Form.Input id="axisOs" onChange={this.handleFieldChange} placeholder='OS Axis' width={2} />
@@ -170,7 +177,7 @@ render() {
                     <Form.Input id="pdOs" onChange={this.handleFieldChange} placeholder='OS PD' width={2} />
                 </Form.Group>
                 <Form.Group>
-                    <Label>Frame:</Label>
+                {/* <Label horizontal>Frame:</Label> */}
                     <Form.Input id="frameName" onChange={this.handleFieldChange} placeholder='Frame Name' width={4} />
                     <Form.Input id="frameManufacturer" onChange={this.handleFieldChange} placeholder='Frame Manufacturer' width={6} />
                     <Form.Select id="frameMaterial" onChange={this.handleSelectChange} options={frame} placeholder='Frame Material' width={3} value={frameMaterial} />

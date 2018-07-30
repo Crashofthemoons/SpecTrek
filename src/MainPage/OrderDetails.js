@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Segment, Button, SegmentGroup, Divider } from 'semantic-ui-react'
+import { Segment, Button, SegmentGroup, Divider, Menu, Image } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 import Order from "./Order"
 
@@ -13,7 +13,13 @@ export default class OrderDetails extends Component {
     render() {
         return (
             <React.Fragment>
-                <Segment.Group>
+                <Menu fixed='top' inverted>
+                        <Menu.Item as='a' header onClick={this.back}>
+                            <Image id="logo" size='tiny' srcSet='../Images/spec-trek_circle.png' style={{ marginRight: '1.5em' }} />
+                            Spec Trek
+                        </Menu.Item>
+            </Menu>
+                <Segment.Group style={{ marginTop: '7em' }}>
                     <Segment.Group horizontal>
                     <Segment inverted color='#fff'>Patient Name: {this.props.order.patientName}</Segment>
                     </Segment.Group>

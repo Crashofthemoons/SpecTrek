@@ -34,9 +34,13 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* .ui.card, .ui.cards>.card {
-  border: 6px solid lightblue !important;
-} */
+.ui.form input[type=text] {
+  margin: .75em;
+}
+
+.ui.selection.dropdown {
+  margin: .75em;
+}
 
 .onTime {
   border: 8px solid #62ADC2 !important;
@@ -52,10 +56,6 @@ body {
 
 .remake {
   border: 8px solid #F87026 !important;
-}
-
-.ui.teal.button, .ui.teal.buttons .button {
-
 }
 
 .ui.divider.inverted, .ui.horizontal.inverted.divider, .ui.vertical.inverted.divider {

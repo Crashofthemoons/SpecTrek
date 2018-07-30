@@ -11,6 +11,18 @@
       "password": "opticnerve",
       "roll": "Optician",
       "id": 2
+    },
+    {
+      "username": "Robert-Duvall",
+      "password": "glasses",
+      "roll": "Optician",
+      "id": 3
+    },
+    {
+      "username": "Robert-Duvall",
+      "password": "glasses",
+      "roll": "Optician",
+      "id": 4
     }
   ],
   "orders": [
