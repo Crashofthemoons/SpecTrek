@@ -7,9 +7,31 @@ import OrderDetails from "./OrderDetails"
 export default class Order extends Component {
 
     render() {
+        let thisOrder
+        let dateObj = new Date()
+        let month = dateObj.getMonth() + 1;
+        let day = dateObj.getDate();
+        let year = dateObj.getFullYear();
+        let newDate = month + "/" + day + "/" + year
+
+        let weekOut = new Date()
+        let shipMonth = weekOut.getMonth() +1
+        let shipDay = weekOut.getDate()
+        let shipYear = weekOut.getFullYear()
+        let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
+
+        if (this.props.order.arrivalDate >= shippingDate && this.props.order.orderStatus !== "Shipped") {
+            thisOrder = "late"
+        } else if (this.props.order.orderStatus === "Shipped") {
+            thisOrder = "shipped"
+        } else if (this.props.order.remake === true ) {
+            thisOrder = "remake"
+        } else {
+            thisOrder = "onTime"
+        }
     return (
         <React.Fragment>
-            <Card id={this.props.order.id}>
+            <Card id={this.props.order.id} className={thisOrder}>
                 <Card.Content>
                     {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
                     <Card.Header>

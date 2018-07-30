@@ -26,7 +26,7 @@ export default class MainPage extends Component {
             <React.Fragment>
                 <Menu fixed='top' inverted>
                         <Menu.Item as='a' header>
-                            <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
+                            <Image id="logo" size='tiny' srcSet='../Images/spec-trek_circle.png' style={{ marginRight: '1.5em' }} />
                             Spec Trek
                         </Menu.Item>
                     <Menu.Item>

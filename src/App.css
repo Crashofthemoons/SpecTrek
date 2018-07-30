@@ -1,3 +1,10 @@
+body {
+  background-image: url(https://st3.depositphotos.com/1003409/18994/v/600/depositphotos_189942432-stock-video-space-travelling-the-speed-of.jpg);
+  background-repeat: round;
+  background-position: right top;
+  margin-left: 2em;
+}
+
 .App {
   text-align: center;
 }
@@ -27,10 +34,31 @@
   to { transform: rotate(360deg); }
 }
 
-.ui.card, .ui.cards>.card {
+/* .ui.card, .ui.cards>.card {
   border: 6px solid lightblue !important;
+} */
+
+.onTime {
+  border: 8px solid #62ADC2 !important;
+}
+
+.late {
+  border: 8px solid #F6E45B !important;
+}
+
+.shipped {
+  border: 8px solid #7C922D !important;
+}
+
+.remake {
+  border: 8px solid #F87026 !important;
 }
 
 .ui.teal.button, .ui.teal.buttons .button {
 
+}
+
+.ui.divider.inverted, .ui.horizontal.inverted.divider, .ui.vertical.inverted.divider {
+  background-color: #fff;
+  height: .15rem;
 }
