@@ -19,13 +19,14 @@ export default class Order extends Component {
         let shipDay = weekOut.getDate()
         let shipYear = weekOut.getFullYear()
         let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
+        console.log(shippingDate)
 
-        if (this.props.order.arrivalDate >= shippingDate && this.props.order.orderStatus !== "Shipped") {
-            thisOrder = "late"
+        if (this.props.order.remake === true ) {
+            thisOrder = "remake"
         } else if (this.props.order.orderStatus === "Shipped") {
             thisOrder = "shipped"
-        } else if (this.props.order.remake === true ) {
-            thisOrder = "remake"
+        } else if (parseInt(this.props.order.shipDate) <= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
+            thisOrder = "late"
         } else {
             thisOrder = "onTime"
         }
