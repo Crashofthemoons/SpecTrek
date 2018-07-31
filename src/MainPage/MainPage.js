@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Form, Menu, Container, Segment } from 'semantic-ui-react'
+import { Form, Menu, Container, Segment, SearchResult } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 import Order from "./Order"
 import { Button, Card, Image, Input, Label, Grid } from 'semantic-ui-react'
 import '../App.css';
-import NewOrder from "./NewOrder"
+import Search from "./Search"
+
 
 export default class MainPage extends Component {
 
     state = {
-        currentUser: ""
+        currentUser: "",
+        search: []
     }
 
     componentWillMount() {
@@ -21,11 +23,32 @@ export default class MainPage extends Component {
         })
     }
 
+    searchBar = (event) => {
+        if (event.key === "Enter") {
+
+            APIManager.getData(`orders?q=${event.target.value}`)
+            .then(SearchResults => {
+                this.setState({
+                    search: SearchResults
+                })
+            })
+            console.log(this.refs.search.inputRef.value)
+            this.refs.search.inputRef.value= ""
+        }
+    }
+
+    resetSearch = () => {
+        console.log("reset")
+        this.setState({
+            search: []
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Menu fixed='top' inverted>
-                    <Menu.Item as='a' header>
+                    <Menu.Item as='a' header onClick={this.resetSearch}>
                         <Image id="logo" size='tiny' srcSet='../Images/spec-trek_circle.png' style={{ marginRight: '1.5em' }} />
                         Spec Trek
                         </Menu.Item>
@@ -33,20 +56,27 @@ export default class MainPage extends Component {
                         <Link
                             to={{
                                 pathname: "/neworder",
+                                currentUser: this.state.currentUser
                             }}>
                             New Order
                         </Link>
                     </Menu.Item>
-                    <Input style={{ marginLeft: '3em' }} transparent inverted placeholder='Search...' />
+                    <Input ref="search" id="search" style={{ marginLeft: '3em' }} onKeyPress={this.searchBar} transparent inverted placeholder='Search...'/>
                     <Menu.Item position="right">
                         {this.state.roll}
                     </Menu.Item>
                 </Menu>
+
                 <Grid>
                     <Grid.Column style={{ paddingRight: '0' }} width={14}>
                         <Card.Group style={{ marginTop: '7em' }}>
-                            {
+                            {(this.state.search < 1)?
                                 this.props.orders.map(order =>
+                                    <Order key={order.id} order={order} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                        {order}
+                                    </Order>
+                                ) :
+                                this.state.search.map(order =>
                                     <Order key={order.id} order={order} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
                                         {order}
                                     </Order>

@@ -9,6 +9,7 @@ import Order from "./MainPage/Order"
 import OrderDetails from "./MainPage/OrderDetails"
 import { Button, Card, Image } from 'semantic-ui-react'
 import NewOrder from "./MainPage/NewOrder"
+import Search from "./MainPage/Search"
 
 
 class ApplicationViews extends Component {
@@ -57,6 +58,9 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/neworder" render={(props) => {
             return <NewOrder {...props} order={this.state.orders}/>
+        }} />
+        <Route path="/search" render={(props) => {
+            return <Search {...props} search={this.state.search}/>
         }} />
       </React.Fragment>
     );
