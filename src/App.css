@@ -63,11 +63,25 @@ body {
   height: .15rem;
 }
 
-.key {
-
+.ui.label>img {
+  width: 25px !important;
+  height: 25px !important;
   border-radius: 100%;
 }
 
 .ui.avatar.image {
   border-radius: 100%;
+}
+
+.ui.large.label, .ui.large.labels .label {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.ui.selection.dropdown {
+  margin: 0 !important;
+}
+
+.ui.card>.extra, .ui.cards>.card>.extra {
+  padding: .5em !important;
 }

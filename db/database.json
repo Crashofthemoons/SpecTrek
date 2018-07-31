@@ -11,6 +11,12 @@
       "password": "opticnerve",
       "roll": "Optician",
       "id": 2
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "roll": "Lab Technician",
+      "id": 3
     }
   ],
   "orders": [
@@ -190,7 +196,7 @@
       "orderDate": "07-17-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Mounting",
+      "orderStatus": "Edging",
       "remake": true,
       "frameName": "Lemtosh",
       "frameManufacturer": "Moscot",
