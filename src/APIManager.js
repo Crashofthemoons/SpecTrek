@@ -16,5 +16,16 @@ export default class APIManager {
         return fetch(`http://localhost:5002/${section}/${id}`, {
             method: "DELETE"
         })
+    };
+    static changeStatus = (body, id) => {
+        return fetch(`http://localhost:5002/orders/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify({
+                orderStatus: body
+            })
+        })
     }
 }

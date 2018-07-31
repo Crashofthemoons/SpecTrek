@@ -77,3 +77,11 @@ body {
   font-size: 1.1rem;
   margin-bottom: 4px;
 }
+
+.ui.selection.dropdown {
+  margin: 0 !important;
+}
+
+.ui.card>.extra, .ui.cards>.card>.extra {
+  padding: .5em !important;
+}

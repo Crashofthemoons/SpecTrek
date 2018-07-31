@@ -30,7 +30,7 @@ export default class Login extends Component {
                 localStorage.setItem("SpecTrek", JSON.stringify({
                     username: this.state.username,
                     id: this.state.id,
-                    roll: "Optician"
+                    roll: this.state.roll
                 }))
             })
             .then(() => {
@@ -44,7 +44,7 @@ export default class Login extends Component {
         let newUser = {
             username: this.state.username,
             password: this.state.password,
-            roll: "Optician"
+            roll: this.state.roll
         }
 
         APIManager.addData("users", newUser)
@@ -56,7 +56,17 @@ export default class Login extends Component {
             })
     }
 
+    handleSelectChange = (e, { value }) => {
+        console.log(e.target.id)
+        this.setState({ [e.target.id]: value })
+    }
+
     render() {
+        const { roll } = this.state
+        const rolls = [
+            { key: 'o', id: "roll", text: 'Optician', value: 'Optician' },
+            { key: 'l', id: "roll", text: 'Lab Technician', value: 'Lab Technician' }
+        ]
         return (
             <React.Fragment>
 
@@ -80,7 +90,7 @@ export default class Login extends Component {
                                     id='password'
                                     placeholder='Password'
                                 />
-
+                                <Form.Select id="roll" onChange={this.handleSelectChange} options={rolls} placeholder='User' width={3} value={roll} />
                                 <Button.Group>
                                     <Button onClick={this.handleRegister}>Register</Button>
                                     <Button.Or />
@@ -90,30 +100,6 @@ export default class Login extends Component {
                         </Form>
                     </Grid.Column>
                 </Grid>
-
-                {/* <Form>
-                    <Form.Group widths='equal'>
-                        <Form.Input
-                            fluid
-                            type="text"
-                            onChange={this.handleFieldChange}
-                            id='username'
-                            placeholder='Username'
-                        />
-                        <Form.Input
-                            fluid
-                            type="password"
-                            onChange={this.handleFieldChange}
-                            id='password'
-                            placeholder='Password'
-                        />
-                        <Button.Group>
-                            <Button onClick={this.handleRegister}>Register</Button>
-                            <Button.Or />
-                            <Button positive onClick={this.handleLogin}>Log-In</Button>
-                        </Button.Group>
-                    </Form.Group>
-                </Form> */}
             </React.Fragment>
         )
     }
