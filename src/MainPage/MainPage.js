@@ -85,10 +85,10 @@ export default class MainPage extends Component {
                         </Card.Group>
                     </Grid.Column>
                     <Grid.Column width={2} style={{ marginTop: '7em' }}>
-                        <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='https://www.colorhexa.com/62b5c2.png' />On Schedule</Label>
+                        <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='https://www.colorhexa.com/62b5c2.png' />On Time</Label>
                         <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='https://www.colorhexa.com/89a817.png' />Shipped</Label>
                         <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw4HBgYHCgcHDQgGBxYPBggHBhAICRAKFRUWFiASHx8YKCggIholHhoTITIoJSkrLi4uGh8zOD8sNygtQjIBCgoKDQ0NDg0NDi8ZFR43Li0tKys3MSsrNys3Ky0rKzctLSsrKystKy4rNy0rKy03Ky0rKy0rNzcrLSsrNzcrK//AABEIAKgBLAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAABAAIFBv/EABsQAQABBQEAAAAAAAAAAAAAAACBESFRYbEC/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAEDAgYF/8QAFxEBAQEBAAAAAAAAAAAAAAAAAGEBEf/aAAwDAQACEQMRAD8A9+Cngn0QGgigNAAiACIAIoGUUgAUABQANAAGggA0AAaAANAAiEAigZDSBkNAAiEHSRTVGUUDKKQAKFAaAANAAiACKBlFIMooGUUABQANBABoAA0AAaABEIBEAA0gdENBogRABEAEUDKKQZRQoBQANAAGgARABEIBFAyigZRQAFIAFAymgABQANBB0gU1QAoAGggA0ACIAIgAikGUUKyigAKAAoAGgARCARABFAyigZRSDKKBlFA6KIaIEUDKKAAoACkAGgADQABoAEQgEUKyigZRQAFAA0EAGgADQAIgAigZRSDohoNUAaCADQAIgAigZRSDKKAAoACgAaAANBFCIAIoGUUDKKAApAAoAGgARAOkGg0QBoAA0AAKQAaABEAEQARSDKKBlFAAUABQANBFAaABEAEQARQMopAAoHRRTVyAUigFAymgDKKBlFIAFAA0ACIAIhAIoGUUDKKBlFIAFCgNAAGgARABFA6KKaOWUQARQrKKQAKBlFAyigZRSDKKAAoAGgADQQCIAIgAigZRSDKKFAKABoA6SIaOQiAAaAANAAiEUIoGUUDKKBlEAEUgyigAKAAoAGggA0ACIAIgAikGUUK6QSaOUEgQSBBIECgAKAJJAJIUBIEEgQSQSCBJIAkgQSQQSBM+tcqkooF8JHYKEkm7B//Z' />Late</Label>
-                        <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='https://www.colorhexa.com/f9803f.png' />Remake</Label>
+                        <Label size='large' color='black'><Image className='key' circular avatar spaced='right' src='https://www.colorhexa.com/f9803f.png' />Remade</Label>
                     </Grid.Column>
                 </Grid>
             </React.Fragment>
