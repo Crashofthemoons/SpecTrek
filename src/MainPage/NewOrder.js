@@ -6,7 +6,7 @@ import APIManager from "../APIManager"
 export default class NewOrder extends Component {
 
     state = {
-        userId: this.props.location.state.currentUser,
+        userId: this.props.location.currentUser,
         patientName: "",
         orderDate: "",
         shipDate: "",

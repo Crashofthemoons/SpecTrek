@@ -71,8 +71,3 @@ body {
 .ui.avatar.image {
   border-radius: 100%;
 }
-
-.ui.image {
-  width: 5px !important;
-  height: 5px !important;
-}
