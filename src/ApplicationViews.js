@@ -35,6 +35,14 @@ class ApplicationViews extends Component {
     })
   }
 
+  updateOrders() {
+    APIManager.getData("orders?_sort=orderDate&_order=asc")
+    .then(orders =>{
+      console.log(orders)
+      // this.setState({orders: orders})
+    })
+  }
+
   isAuthenticated = () =>
     localStorage.getItem("SpecTrek") !== null ||
     sessionStorage.getItem("SpecTrek") !== null;
@@ -51,13 +59,13 @@ class ApplicationViews extends Component {
           }
         }} />
         <Route exact path="/order" render={(props) => {
-          return <Order {...props} order={props.location.state}/>
+          return <Order {...props} role={props.location.state} order={props.location.state}/>
         }} />
         <Route path="/order/orderdetails" render={(props) => {
             return <OrderDetails {...props} order={props.location.state}/>
         }} />
         <Route path="/neworder" render={(props) => {
-            return <NewOrder {...props} order={this.state.orders}/>
+            return <NewOrder {...props} updateOrders={this.updateOrders} order={this.state.orders}/>
         }} />
         <Route path="/search" render={(props) => {
             return <Search {...props} search={this.state.search}/>

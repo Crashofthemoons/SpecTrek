@@ -27,7 +27,7 @@ export default class Order extends Component {
 
     render() {
 
-        if (this.props.roll === "Optician") {
+        if ( this.props.role === "Optician") {
             // console.log("optician")
             let thisOrder
             let dateObj = new Date()

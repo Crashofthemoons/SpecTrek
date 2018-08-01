@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Form, Menu, Container, Segment, SearchResult } from 'semantic-ui-react'
+import { Form, Menu, Container, Segment, SearchResult, Loader } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 import Order from "./Order"
 import { Button, Card, Image, Input, Label, Grid } from 'semantic-ui-react'
@@ -13,14 +13,14 @@ export default class MainPage extends Component {
     state = {
         currentUser: "",
         search: [],
-        roll: ""
+        role: ""
     }
 
     componentWillMount() {
         let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
         this.setState({
             currentUser: cUser.id,
-            roll: cUser.roll
+            role: cUser.role
         })
     }
 
@@ -45,10 +45,19 @@ export default class MainPage extends Component {
         })
     }
 
+    logOut = () => {
+        localStorage.removeItem("SpecTrek")
+        this.setState({
+            currentUser: "",
+            role: ""
+        })
+        this.props.history.push("/")
+    }
+
 
     render() {
 
-        if (this.state.roll === "Optician") {
+        if (this.state.role === "Optician") {
 
             return (
                 <React.Fragment>
@@ -67,9 +76,14 @@ export default class MainPage extends Component {
                             </Link>
                         </Menu.Item>
                         <Input ref="search" id="search" style={{ marginLeft: '3em' }} onKeyPress={this.searchBar} transparent inverted placeholder='Search...'/>
-                        <Menu.Item position="right">
-                            {this.state.roll}
-                        </Menu.Item>
+                        <Menu.Menu position="right">
+                            <Menu.Item>
+                                {this.state.role}
+                            </Menu.Item>
+                            <Menu.Item onClick={this.logOut}>
+                                    Log Out
+                            </Menu.Item>
+                        </Menu.Menu>
                     </Menu>
 
                     <Grid>
@@ -77,12 +91,12 @@ export default class MainPage extends Component {
                             <Card.Group style={{ marginTop: '7em' }}>
                                 {(this.state.search < 1)?
                                     this.props.orders.map(order =>
-                                        <Order key={order.id} order={order} roll={this.roll} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
                                             {order}
                                         </Order>
                                     ) :
                                     this.state.search.map(order =>
-                                        <Order key={order.id} order={order}  currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
                                             {order}
                                         </Order>
                                     )
@@ -116,9 +130,14 @@ export default class MainPage extends Component {
                         </Link>
                     </Menu.Item> */}
                     <Input ref="search" id="search" style={{ marginLeft: '3em' }} onKeyPress={this.searchBar} transparent inverted placeholder='Search...'/>
-                    <Menu.Item position="right">
-                        {this.state.roll}
-                    </Menu.Item>
+                    <Menu.Menu position="right">
+                        <Menu.Item>
+                            {this.state.role}
+                        </Menu.Item>
+                        <Menu.Item onClick={this.logOut}>
+                                Log Out
+                        </Menu.Item>
+                    </Menu.Menu>
                 </Menu>
 
                 <Grid>
