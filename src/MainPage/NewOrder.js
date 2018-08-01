@@ -87,8 +87,7 @@ export default class NewOrder extends Component {
         let order= this.state
         console.log("adding Order")
         APIManager.addData("orders", order)
-        .then(this.props.updateOrders())
-        .then(this.props.history.push("/"))
+        .then(() => this.props.history.push("/"))
     }
 
 
@@ -125,17 +124,17 @@ render() {
     ]
 
     const design = [
-        { key: 'v', id: "lensDesign", text: 'SV', value: 'SV' },
-        { key: 'i', id: "lensDesign", text: 'Progressive I', value: 'Progressive I' },
-        { key: 'ii', id: "lensDesign", text: 'Progressive II', value: 'Progressive II' },
-        { key: 'iii', id: "lensDesign", text: 'Progressive III', value: 'Progressive III' }
+        { key: 'o', id: "lensDesign", text: 'SV', value: 'SV' },
+        { key: 'p', id: "lensDesign", text: 'Progressive I', value: 'Progressive I' },
+        { key: 'q', id: "lensDesign", text: 'Progressive II', value: 'Progressive II' },
+        { key: 'r', id: "lensDesign", text: 'Progressive III', value: 'Progressive III' }
     ]
 
     const frame = [
-        { key: 'z', id: "frameMaterial", text: 'Zyl', value: 'Zyl' },
+        { key: 's', id: "frameMaterial", text: 'Zyl', value: 'Zyl' },
         { key: 't', id: "frameMaterial", text: 'Metal', value: 'Metal' },
-        { key: 'dm', id: "frameMaterial", text: 'Drill Mount', value: 'Drill Mount' },
-        { key: 's', id: "frameMaterial", text: 'Semi-Rimless', value: 'Semi-Rimless' }
+        { key: 'u', id: "frameMaterial", text: 'Drill Mount', value: 'Drill Mount' },
+        { key: 'v', id: "frameMaterial", text: 'Semi-Rimless', value: 'Semi-Rimless' }
     ]
 
     return (
