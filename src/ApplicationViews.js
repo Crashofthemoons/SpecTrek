@@ -51,7 +51,7 @@ class ApplicationViews extends Component {
           }
         }} />
         <Route exact path="/order" render={(props) => {
-          return <Order {...props} order={props.location.state}/>
+          return <Order {...props} role={props.location.state} order={props.location.state}/>
         }} />
         <Route path="/order/orderdetails" render={(props) => {
             return <OrderDetails {...props} order={props.location.state}/>

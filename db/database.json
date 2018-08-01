@@ -3,19 +3,19 @@
     {
       "username": "Robert-Duvall",
       "password": "glasses",
-      "roll": "Optician",
+      "role": "Optician",
       "id": 1
     },
     {
       "username": "Mandy-Stevens",
       "password": "opticnerve",
-      "roll": "Optician",
+      "role": "Optician",
       "id": 2
     },
     {
       "username": "Jenn Lawson",
       "password": "time",
-      "roll": "Lab Technician",
+      "role": "Lab Technician",
       "id": 3
     }
   ],
@@ -196,7 +196,7 @@
       "orderDate": "07-17-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Edging",
+      "orderStatus": "Polishing",
       "remake": true,
       "frameName": "Lemtosh",
       "frameManufacturer": "Moscot",
@@ -325,6 +325,40 @@
       "ocsegOd": "17",
       "ocsegOs": "17",
       "id": 9
+    },
+    {
+      "userId": 1,
+      "patientName": "Darren Mittermeier",
+      "orderDate": "8/1/2018",
+      "shipDate": "8/8/2018",
+      "arrivalDate": "8/10/2018",
+      "orderStatus": "Submitted",
+      "remake": false,
+      "frameName": "Hampton",
+      "frameManufacturer": "Garrett Leight",
+      "frameMaterial": "Zyl",
+      "a": "46",
+      "b": "46",
+      "dbl": "22",
+      "ed": "46",
+      "temple": "145",
+      "dr": "Dr. Frankenstein",
+      "lensMaterial": "CR-39",
+      "lensCoating": "EX3",
+      "tint": "",
+      "lensDesign": "SV",
+      "sphereOd": "-1.50",
+      "sphereOs": "-1.25",
+      "cylOd": "-2.00",
+      "cylOs": "-1.75",
+      "axisOd": "090",
+      "axisOs": "087",
+      "add": "",
+      "pdOd": "29",
+      "pdOs": "29",
+      "ocsegOd": "25",
+      "ocsegOs": "25",
+      "id": 10
     }
   ]
 }

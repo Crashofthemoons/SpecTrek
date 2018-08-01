@@ -7,7 +7,7 @@ import APIManager from "../APIManager"
 export default class Login extends Component {
     state = {
         username: "",
-        roll: "",
+        role: "",
         id: ""
     };
 
@@ -21,16 +21,19 @@ export default class Login extends Component {
         APIManager.getData(`users?username=${this.state.username}`)
             .then(user => {
                 if (user.length > 0 && this.state.password === user[0].password) {
-                    this.setState({ id: user[0].id })
+                    this.setState({
+                        id: user[0].id,
+                        role: user[0].role,
+                        username: user[0].username                    })
                 } else {
                     alert("Invalid Username or Password Input. Please try again.")
                 }
             })
-            .then(() => {
+            .then(user => {
                 localStorage.setItem("SpecTrek", JSON.stringify({
                     username: this.state.username,
                     id: this.state.id,
-                    roll: this.state.roll
+                    role: this.state.role
                 }))
             })
             .then(() => {
@@ -44,7 +47,7 @@ export default class Login extends Component {
         let newUser = {
             username: this.state.username,
             password: this.state.password,
-            roll: this.state.roll
+            role: this.state.role
         }
 
         APIManager.addData("users", newUser)
@@ -62,10 +65,10 @@ export default class Login extends Component {
     }
 
     render() {
-        const { roll } = this.state
-        const rolls = [
-            { key: 'o', id: "roll", text: 'Optician', value: 'Optician' },
-            { key: 'l', id: "roll", text: 'Lab Technician', value: 'Lab Technician' }
+        const { role } = this.state
+        const roles = [
+            { key: 'o', id: "role", text: 'Optician', value: 'Optician' },
+            { key: 'l', id: "role", text: 'Lab Technician', value: 'Lab Technician' }
         ]
         return (
             <React.Fragment>
@@ -90,7 +93,7 @@ export default class Login extends Component {
                                     id='password'
                                     placeholder='Password'
                                 />
-                                <Form.Select id="roll" onChange={this.handleSelectChange} options={rolls} placeholder='User' width={3} value={roll} />
+                                <Form.Select id="role" onChange={this.handleSelectChange} options={roles} placeholder='User' width={3} value={role} />
                                 <Button.Group>
                                     <Button onClick={this.handleRegister}>Register</Button>
                                     <Button.Or />
