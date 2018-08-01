@@ -13,16 +13,31 @@ export default class MainPage extends Component {
     state = {
         currentUser: "",
         search: [],
-        role: ""
+        role: "",
+        orders: []
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
-        this.setState({
-            currentUser: cUser.id,
-            role: cUser.role
+        APIManager.getData("orders?_sort=orderDate&_order=asc")
+        .then(orders =>{
+          this.setState({
+              orders: orders,
+              currentUser: cUser.id,
+              role: cUser.role
+            })
         })
-    }
+      }
+
+      deleteOrder = (id) => {
+        APIManager.deleteData("orders", id)
+        .then(() => {
+          APIManager.getData("orders?_sort=orderDate&_order=asc")
+          .then(orders =>{
+            this.setState({orders: orders})
+          })
+        })
+      }
 
     searchBar = (event) => {
         if (event.key === "Enter") {
@@ -90,13 +105,13 @@ export default class MainPage extends Component {
                         <Grid.Column style={{ paddingRight: '0' }} width={14}>
                             <Card.Group style={{ marginTop: '7em' }}>
                                 {(this.state.search < 1)?
-                                    this.props.orders.map(order =>
-                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                    this.state.orders.map(order =>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                             {order}
                                         </Order>
                                     ) :
                                     this.state.search.map(order =>
-                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                             {order}
                                         </Order>
                                     )
@@ -144,13 +159,13 @@ export default class MainPage extends Component {
                     <Grid.Column style={{ paddingRight: '0' }} width={14}>
                         <Card.Group style={{ marginTop: '7em' }}>
                             {(this.state.search < 1)?
-                                this.props.orders.map(order =>
-                                    <Order key={order.id} order={order} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                this.state.orders.map(order =>
+                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 ) :
                                 this.state.search.map(order =>
-                                    <Order key={order.id} order={order} currentUser={this.currentUser} deleteOrder={this.props.deleteOrder}>
+                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 )

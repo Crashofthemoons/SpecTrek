@@ -14,34 +14,18 @@ import Search from "./MainPage/Search"
 
 class ApplicationViews extends Component {
   state = {
-    currentUser: "",
-    orders: []
+    currentUser: ""
   }
 
-  componentWillMount() {
-    APIManager.getData("orders?_sort=orderDate&_order=asc")
-    .then(orders =>{
-      this.setState({orders: orders})
-    })
-  }
 
-  deleteOrder = (id) => {
-    APIManager.deleteData("orders", id)
-    .then(() => {
-      APIManager.getData("orders?_sort=orderDate&_order=asc")
-      .then(orders =>{
-        this.setState({orders: orders})
-      })
-    })
-  }
 
-  updateOrders() {
-    APIManager.getData("orders?_sort=orderDate&_order=asc")
-    .then(orders =>{
-      console.log(orders)
-      // this.setState({orders: orders})
-    })
-  }
+  // updateOrders() {
+  //   APIManager.getData("orders?_sort=orderDate&_order=asc")
+  //   .then(orders =>{
+  //     console.log(orders)
+  //     // this.setState({orders: orders})
+  //   })
+  // }
 
   isAuthenticated = () =>
     localStorage.getItem("SpecTrek") !== null ||
@@ -53,7 +37,7 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route exact path="/" render={(props) => {
           if (this.isAuthenticated()) {
-            return <MainPage {...props} deleteOrder={this.deleteOrder} orders={this.state.orders} />
+            return <MainPage {...props} />
           } else {
             return <Login />
           }
@@ -65,10 +49,10 @@ class ApplicationViews extends Component {
             return <OrderDetails {...props} order={props.location.state}/>
         }} />
         <Route path="/neworder" render={(props) => {
-            return <NewOrder {...props} updateOrders={this.updateOrders} order={this.state.orders}/>
+            return <NewOrder {...props} order={this.props.orders}/>
         }} />
         <Route path="/search" render={(props) => {
-            return <Search {...props} search={this.state.search}/>
+            return <Search {...props} search={this.props.search}/>
         }} />
       </React.Fragment>
     );

@@ -26,6 +26,6 @@ export default class APIManager {
             body: JSON.stringify({
                 orderStatus: body
             })
-        })
+        }).then(e => e.json())
     }
 }
