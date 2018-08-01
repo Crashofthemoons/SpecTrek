@@ -12,10 +12,9 @@ export default class Order extends Component {
     }
 
     handleSelectChange = (e, { value }) => {
-        console.log(e.target.parentNode.parentNode.parentNode.lastElementChild, value)
+        console.log(e.target, value)
         this.setState({ orderStatus: value })
-        let button = e.target.parentNode.parentNode.parentNode.lastElementChild
-        button.setAttribute("color", "green" )
+
     }
 
     changeStatus = (event) => {
@@ -25,14 +24,21 @@ export default class Order extends Component {
         .then((thing)=>{
             console.log(thing)
             this.setState({
-            orderStatus: "",
-            order: thing
-        })
+                orderStatus: "",
+                order: thing
+            })
         })
     }
 
-    remakeOrder = () =>{
+    remakeOrder = (event) =>{
         console.log("remake")
+        let id = event.currentTarget.parentNode.parentNode.id
+        APIManager.remakeOrder(true, id)
+        .then((thing)=> {
+            this.setState({
+                order: thing
+            })
+        })
     }
 
     render() {
@@ -48,7 +54,7 @@ export default class Order extends Component {
 
             let weekOut = new Date()
             let shipMonth = weekOut.getMonth() +1
-            let shipDay = weekOut.getDate()
+            let shipDay = weekOut.getDate() +1
             let shipYear = weekOut.getFullYear()
             let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
             console.log(shippingDate)
@@ -57,17 +63,18 @@ export default class Order extends Component {
                 thisOrder = "remake"
             } else if (this.props.order.orderStatus === "Shipped") {
                 thisOrder = "shipped"
-            } else if (parseInt(this.props.order.shipDate) <= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
-                thisOrder = "late"
-            } else {
+            } else if (parseInt(this.props.order.shipDate) >= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
                 thisOrder = "onTime"
+            } else {
+                thisOrder = "late"
             }
         return (
             <React.Fragment>
                 <Card id={this.props.order.id} className={thisOrder}>
                     <Card.Content>
                         {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
-                        <Card.Header>{this.props.order.patientName} - {this.props.order.orderStatus}</Card.Header>
+                        <Card.Header>{this.props.order.patientName}</Card.Header>
+                        <Label ribbon="right" color="grey" floated="right" >{this.state.order.orderStatus}</Label>
                         <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
                         <Card.Meta>Estimated Ship Date: {this.props.order.shipDate}</Card.Meta>
                         <Card.Meta>Estimated Arrival Date: {this.props.order.arrivalDate}</Card.Meta>
@@ -131,10 +138,10 @@ export default class Order extends Component {
                 thisOrder = "remake"
             } else if (this.props.order.orderStatus === "Shipped") {
                 thisOrder = "shipped"
-            } else if (parseInt(this.props.order.shipDate) <= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
-                thisOrder = "late"
-            } else {
+            } else if (parseInt(this.props.order.shipDate) >= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
                 thisOrder = "onTime"
+            } else {
+                thisOrder = "late"
             }
         return (
             <React.Fragment>

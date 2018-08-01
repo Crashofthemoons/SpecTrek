@@ -27,5 +27,16 @@ export default class APIManager {
                 orderStatus: body
             })
         }).then(e => e.json())
+    };
+    static remakeOrder = (body, id) => {
+        return fetch(`http://localhost:5002/orders/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify({
+                remake: body
+            })
+        }).then(e=> e.json())
     }
 }
