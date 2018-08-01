@@ -85,8 +85,9 @@ export default class NewOrder extends Component {
 
     addNewOrder = () => {
         let order= this.state
-        console.log(this.state)
+        console.log("adding Order")
         APIManager.addData("orders", order)
+        .then(this.props.updateOrders())
         .then(this.props.history.push("/"))
     }
 
