@@ -29,6 +29,71 @@ export default class MainPage extends Component {
         })
       }
 
+      handleSelectChange = (e, { value }) => {
+        let id = e.currentTarget.parentNode.parentNode.parentNode.parentNode.id
+        // this.setState({ orderStatus: value })
+        APIManager.changeStatus(value, id)
+        .then(() => {
+            APIManager.getData("orders?_sort=orderDate&_order=asc")
+            .then(orders =>{
+              this.setState({orders: orders})
+            })
+          })
+
+          APIManager.getData(`orders/${id}`)
+          .then(order=>{
+
+              if (value === "Shipped" && order.remake === true){
+                  console.log("change to green")
+                  APIManager.remakeOrder(!order.remake, id)
+                // .then(() => {
+                //     APIManager.getData("orders?_sort=orderDate&_order=asc")
+                //     .then(orders =>{
+                //       this.setState({orders: orders})
+                //     })
+                //   })
+
+                  // APIManager.remakeOrder(!this.props.order.remake, e.currentTarget.parentNode.parentNode.parentNode.parentNode.id)
+                  // .then(() => {
+                  //     APIManager.getData("orders?_sort=orderDate&_order=asc")
+                  //     .then(orders =>{
+                  //       this.setState({orders: orders})
+                  //     })
+                  //   })
+              }
+          })
+
+    }
+
+    // changeStatus = (event) => {
+    //     console.log("status", this.state)
+    //     let id = event.currentTarget.parentNode.parentNode.id
+    //     let status= this.props.orderStatus
+    //     APIManager.changeStatus(status, id)
+    //     .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
+    //     .then(orders =>{
+    //       this.setState({
+    //           orders: orders
+    //         })
+    //     }))
+    // }
+
+    remakeOrder = (event) =>{
+        let id = event.currentTarget.parentNode.parentNode.id
+            console.log("remake", id)
+            APIManager.getData(`orders/${id}`)
+            .then(order=>{
+                console.log(order.remake)
+                APIManager.remakeOrder(!order.remake, id)
+                .then(() => {
+                    APIManager.getData("orders?_sort=orderDate&_order=asc")
+                    .then(orders =>{
+                      this.setState({orders: orders})
+                    })
+                  })
+            })
+    }
+
       deleteOrder = (id) => {
         APIManager.deleteData("orders", id)
         .then(() => {
@@ -71,6 +136,9 @@ export default class MainPage extends Component {
 
 
     render() {
+
+        const { orderStatus } = this.state
+
 
         if (this.state.role === "Optician") {
 
@@ -128,6 +196,7 @@ export default class MainPage extends Component {
                 </React.Fragment>
             )
         } else {
+
         return (
             <React.Fragment>
                 <Menu fixed='top' inverted>
@@ -160,12 +229,12 @@ export default class MainPage extends Component {
                         <Card.Group style={{ marginTop: '7em' }}>
                             {(this.state.search < 1)?
                                 this.state.orders.map(order =>
-                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                    <Order key={order.id} order={order} orderStatus={orderStatus} handleSelectChange={this.handleSelectChange} remakeOrder={this.remakeOrder} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 ) :
                                 this.state.search.map(order =>
-                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                    <Order key={order.id} order={order} orderStatus={orderStatus} handleSelectChange={this.handleSelectChange} remakeOrder={this.remakeOrder} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 )

@@ -6,34 +6,9 @@ import OrderDetails from "./OrderDetails"
 
 export default class Order extends Component {
 
-    state = {
-        orderStatus: '',
-        order: {...this.props.order}
-    }
-
-    handleSelectChange = (e, { value }) => {
-        console.log(e.target.parentNode.parentNode.parentNode.lastElementChild, value)
-        this.setState({ orderStatus: value })
-        let button = e.target.parentNode.parentNode.parentNode.lastElementChild
-        button.setAttribute("color", "green" )
-    }
-
-    changeStatus = (event) => {
-        let id = event.currentTarget.parentNode.parentNode.id
-        console.log(id)
-        APIManager.changeStatus(this.state.orderStatus, id)
-        .then((thing)=>{
-            console.log(thing)
-            this.setState({
-            orderStatus: "",
-            order: thing
-        })
-        })
-    }
-
-    remakeOrder = () =>{
-        console.log("remake")
-    }
+    // state = {
+    //     order: {...this.props.order}
+    // }
 
     render() {
 
@@ -48,26 +23,27 @@ export default class Order extends Component {
 
             let weekOut = new Date()
             let shipMonth = weekOut.getMonth() +1
-            let shipDay = weekOut.getDate()
+            let shipDay = weekOut.getDate() +1
             let shipYear = weekOut.getFullYear()
             let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
             console.log(shippingDate)
 
-            if (this.props.order.remake === true ) {
+            if (this.props.order.remake === true) {
                 thisOrder = "remake"
             } else if (this.props.order.orderStatus === "Shipped") {
                 thisOrder = "shipped"
-            } else if (parseInt(this.props.order.shipDate) <= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
-                thisOrder = "late"
-            } else {
+            } else if (parseInt(this.props.order.shipDate) >= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
                 thisOrder = "onTime"
+            } else {
+                thisOrder = "late"
             }
         return (
             <React.Fragment>
                 <Card id={this.props.order.id} className={thisOrder}>
                     <Card.Content>
                         {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
-                        <Card.Header>{this.props.order.patientName} - {this.props.order.orderStatus}</Card.Header>
+                        <Card.Header>{this.props.order.patientName}</Card.Header>
+                        <Label ribbon="right" color="grey" floated="right" >{this.props.order.orderStatus}</Label>
                         <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
                         <Card.Meta>Estimated Ship Date: {this.props.order.shipDate}</Card.Meta>
                         <Card.Meta>Estimated Arrival Date: {this.props.order.arrivalDate}</Card.Meta>
@@ -99,19 +75,17 @@ export default class Order extends Component {
         } else {
             // console.log("tech")
 
-         const { orderStatus } = this.state
-
-        const status = [
-            { key: '1', id: "orderStatus", text: 'Checked-In', value: 'Checked-In' },
-            { key: '2', id: "orderStatus", text: 'Tinting', value: 'Tinting' },
-            { key: '3', id: "orderStatus", text: 'Blocking', value: 'Blocking' },
-            { key: '4', id: "orderStatus", text: 'Edging', value: 'Edging' },
-            { key: '5', id: "orderStatus", text: 'Polishing', value: 'Polishing' },
-            { key: '6', id: "orderStatus", text: 'Coating', value: 'Coating' },
-            { key: '7', id: "orderStatus", text: 'Mounting', value: 'Mounting' },
-            { key: '8', id: "orderStatus", text: 'Verification', value: 'Verification' },
-            { key: '9', id: "orderStatus", text: 'Shipped', value: 'Shipped' }
-        ]
+            const status = [
+                { key: '1', id: "orderStatus", text: 'Checked-In', value: 'Checked-In' },
+                { key: '2', id: "orderStatus", text: 'Tinting', value: 'Tinting' },
+                { key: '3', id: "orderStatus", text: 'Blocking', value: 'Blocking' },
+                { key: '4', id: "orderStatus", text: 'Edging', value: 'Edging' },
+                { key: '5', id: "orderStatus", text: 'Polishing', value: 'Polishing' },
+                { key: '6', id: "orderStatus", text: 'Coating', value: 'Coating' },
+                { key: '7', id: "orderStatus", text: 'Mounting', value: 'Mounting' },
+                { key: '8', id: "orderStatus", text: 'Verification', value: 'Verification' },
+                { key: '9', id: "orderStatus", text: 'Shipped', value: 'Shipped' }
+            ]
 
             let thisOrder
             let dateObj = new Date()
@@ -131,10 +105,10 @@ export default class Order extends Component {
                 thisOrder = "remake"
             } else if (this.props.order.orderStatus === "Shipped") {
                 thisOrder = "shipped"
-            } else if (parseInt(this.props.order.shipDate) <= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
-                thisOrder = "late"
-            } else {
+            } else if (parseInt(this.props.order.shipDate) >= parseInt(newDate) && this.props.order.orderStatus !== "Shipped") {
                 thisOrder = "onTime"
+            } else {
+                thisOrder = "late"
             }
         return (
             <React.Fragment>
@@ -142,7 +116,7 @@ export default class Order extends Component {
                     <Card.Content>
                         {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
                         <Card.Header>{this.props.order.patientName}</Card.Header>
-                        <Label ribbon="right" color="grey" floated="right" >{this.state.order.orderStatus}</Label>
+                        <Label ribbon="right" color="grey" floated="right" >{this.props.order.orderStatus}</Label>
                         <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
                         <Card.Meta>Estimated Ship Date: {this.props.order.shipDate}</Card.Meta>
                         <Card.Meta>Estimated Arrival Date: {this.props.order.arrivalDate}</Card.Meta>
@@ -160,16 +134,15 @@ export default class Order extends Component {
                                     Details
                                 </Link>
                             </Button>
-                            <Select compact id="orderStatus" onChange={this.handleSelectChange} options={status} placeholder='Status' width={2} value={orderStatus} />
-                            {/* <Button size="mini" color="green" onClick={this.changeStatus} icon="check circle outline"></Button> */}
-                            <Popup
-                                trigger={<Button color='green' onClick={this.changeStatus} size="mini" icon='check circle outline' />}
+                            <Select compact id="orderStatus" onChange={this.props.handleSelectChange} options={status} placeholder='Status' width={2} value={this.props.orderStatus} />
+                            {/* <Popup
+                                trigger={<Button color='green' onClick={this.props.changeStatus} size="mini" icon='check circle outline' />}
                                 content={"Submit Order Status"}
                                 on="hover"
                                 position='top right'
-                            />
+                            /> */}
                             <Popup
-                                trigger={<Button color='red' onClick={this.remakeOrder} size="mini" icon='redo' />}
+                                trigger={<Button color='red' onClick={this.props.remakeOrder} size="mini" icon='redo' />}
                                 content={"Remake"}
                                 on="hover"
                                 position='top right'
