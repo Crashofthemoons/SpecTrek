@@ -6,9 +6,9 @@ import OrderDetails from "./OrderDetails"
 
 export default class Order extends Component {
 
-    state = {
-        order: {...this.props.order}
-    }
+    // state = {
+    //     order: {...this.props.order}
+    // }
 
     render() {
 
@@ -28,7 +28,7 @@ export default class Order extends Component {
             let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
             console.log(shippingDate)
 
-            if (this.props.order.remake === true ) {
+            if (this.props.order.remake === true) {
                 thisOrder = "remake"
             } else if (this.props.order.orderStatus === "Shipped") {
                 thisOrder = "shipped"
@@ -135,13 +135,12 @@ export default class Order extends Component {
                                 </Link>
                             </Button>
                             <Select compact id="orderStatus" onChange={this.props.handleSelectChange} options={status} placeholder='Status' width={2} value={this.props.orderStatus} />
-                            {/* <Button size="mini" color="green" onClick={this.changeStatus} icon="check circle outline"></Button> */}
-                            <Popup
+                            {/* <Popup
                                 trigger={<Button color='green' onClick={this.props.changeStatus} size="mini" icon='check circle outline' />}
                                 content={"Submit Order Status"}
                                 on="hover"
                                 position='top right'
-                            />
+                            /> */}
                             <Popup
                                 trigger={<Button color='red' onClick={this.props.remakeOrder} size="mini" icon='redo' />}
                                 content={"Remake"}
