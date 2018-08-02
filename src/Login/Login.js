@@ -25,19 +25,17 @@ export default class Login extends Component {
                         id: user[0].id,
                         role: user[0].role,
                         username: user[0].username                    })
+                    localStorage.setItem("SpecTrek", JSON.stringify({
+                        username: this.state.username,
+                        id: this.state.id,
+                        role: this.state.role
+                    }))
+                    .then(() => {
+                        window.location.reload()
+                    })
                 } else {
                     alert("Invalid Username or Password Input. Please try again.")
                 }
-            })
-            .then(user => {
-                localStorage.setItem("SpecTrek", JSON.stringify({
-                    username: this.state.username,
-                    id: this.state.id,
-                    role: this.state.role
-                }))
-            })
-            .then(() => {
-                window.location.reload()
             })
     }
 
@@ -50,13 +48,17 @@ export default class Login extends Component {
             role: this.state.role
         }
 
-        APIManager.addData("users", newUser)
-            .then(() => {
-                this.handleLogin()
-            })
-            .then(() => {
-                window.location.reload()
-            })
+        if (newUser.username.length > 0 && newUser.password.length > 0) {
+            APIManager.addData("users", newUser)
+                .then(() => {
+                    this.handleLogin()
+                })
+                .then(() => {
+                    window.location.reload()
+                })
+        } else {
+            alert("Invalid Username or Password Input. Please try again.")
+        }
     }
 
     handleSelectChange = (e, { value }) => {
@@ -79,19 +81,19 @@ export default class Login extends Component {
                         <Image size="massive" centered src='../Images/spec-trek_circle.png' />
                         <Form size='large'>
                             <Segment stacked>
-                                <Form.Input
+                                <Form.Input required
                                     fluid
                                     type="text"
                                     onChange={this.handleFieldChange}
                                     id='username'
-                                    placeholder='Username'
+                                    placeholder='Username*'
                                 />
-                                <Form.Input
+                                <Form.Input required
                                     fluid
                                     type="password"
                                     onChange={this.handleFieldChange}
                                     id='password'
-                                    placeholder='Password'
+                                    placeholder='Password*'
                                 />
                                 <Form.Select id="role" onChange={this.handleSelectChange} options={roles} placeholder='User' width={3} value={role} />
                                 <Button.Group>

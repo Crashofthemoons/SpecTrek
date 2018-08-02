@@ -17,42 +17,6 @@
       "password": "time",
       "role": "Lab Technician",
       "id": 3
-    },
-    {
-      "username": "jisie",
-      "password": "test123",
-      "role": "Lab Technician",
-      "id": 4
-    },
-    {
-      "username": "brett",
-      "password": "brett",
-      "role": "Optician",
-      "id": 5
-    },
-    {
-      "username": "Robert-Duvall",
-      "password": "glasses",
-      "role": "",
-      "id": 6
-    },
-    {
-      "username": "AdelaideY",
-      "password": "123",
-      "role": "Optician",
-      "id": 7
-    },
-    {
-      "username": "Elmo",
-      "password": "1245",
-      "role": "",
-      "id": 8
-    },
-    {
-      "username": "Tom",
-      "password": "tom",
-      "role": "Lab Technician",
-      "id": 9
     }
   ],
   "orders": [
@@ -198,8 +162,8 @@
       "orderDate": "07-22-2018",
       "shipDate": "07-29-2018",
       "arrivalDate": "07-31-2018",
-      "orderStatus": "Mounting",
-      "remake": false,
+      "orderStatus": "Tinting",
+      "remake": true,
       "frameName": "Hampton",
       "frameManufacturer": "Garret Leight",
       "frameMaterial": "Zyl",
@@ -295,38 +259,38 @@
       "id": 7
     },
     {
-      "userId": 2,
-      "patientName": "Tom Cruise",
-      "orderDate": "07-20-2018",
-      "shipDate": "07-27-2018",
-      "arrivalDate": "07-29-2018",
-      "orderStatus": "Verification",
+      "patientName": "Darren Mittermeier",
+      "orderDate": "8/2/2018",
+      "shipDate": "8/9/2018",
+      "arrivalDate": "8/11/2018",
+      "orderStatus": "Shipped",
       "remake": false,
-      "frameName": "Ando",
-      "frameManufacturer": "Mykita",
-      "frameMaterial": "Metal",
-      "a": "49",
-      "b": "45",
-      "dbl": "18",
-      "ed": "49",
-      "temple": "140",
-      "dr": "Dr. Zeus",
-      "lensMaterial": "Trivex",
-      "lensCoating": "EX3",
-      "tint": "",
-      "lensDesign": "SV",
-      "sphereOd": "-5.00",
-      "sphereOs": "-5.25",
-      "cylOd": "",
-      "cylOs": "",
-      "axisOd": "",
-      "axisOs": "",
-      "add": "",
-      "pdOd": "30",
-      "pdOs": "30",
-      "ocsegOd": "17",
-      "ocsegOs": "17",
-      "id": 9
+      "frameName": "Hampton",
+      "frameManufacturer": "Garrett Leight",
+      "frameMaterial": "Drill Mount",
+      "a": "765",
+      "b": "46",
+      "dbl": "22",
+      "ed": "46",
+      "temple": "123",
+      "dr": "Dr. Frankenstein",
+      "lensMaterial": "1.70",
+      "lensCoating": "Blue Zero",
+      "tint": "Grey",
+      "lensDesign": "Progressive III",
+      "sphereOd": "-1.50",
+      "sphereOs": "-1.25",
+      "cylOd": "-2.00",
+      "cylOs": "-1.75",
+      "axisOd": "090",
+      "axisOs": "087",
+      "add": "+2.00",
+      "pdOd": "29",
+      "pdOs": "29",
+      "ocsegOd": "25",
+      "ocsegOs": "25",
+      "": "Semi-Rimless",
+      "id": 8
     }
   ]
 }
