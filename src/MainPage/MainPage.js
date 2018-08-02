@@ -29,6 +29,55 @@ export default class MainPage extends Component {
         })
       }
 
+      handleSelectChange = (e, { value }) => {
+        console.log("select", e.currentTarget.parentNode.parentNode.parentNode.parentNode.id, value)
+        // this.setState({ orderStatus: value })
+        APIManager.changeStatus(value, e.currentTarget.parentNode.parentNode.parentNode.parentNode.id)
+        .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
+        .then(orders =>{
+          this.setState({
+              orders: orders
+            })
+        }))
+
+        // if (value === "Shipped" && this.props.order.remake === true){
+        //     // this.remakeOrder()
+        //     APIManager.remakeOrder(!this.props.order.remake, e.currentTarget.parentNode.parentNode.parentNode.parentNode.id)
+        //     .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
+        //         .then(orders =>{
+        //         this.setState({
+        //         orders: orders
+        //     })
+        // }))
+        // }
+
+    }
+
+    changeStatus = (event) => {
+        console.log("status", this.state)
+        let id = event.currentTarget.parentNode.parentNode.id
+        let status= this.props.orderStatus
+        APIManager.changeStatus(status, id)
+        .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
+        .then(orders =>{
+          this.setState({
+              orders: orders
+            })
+        }))
+    }
+
+    remakeOrder = (event) =>{
+        console.log("remake", event.currentTarget)
+        let id = event.currentTarget.parentNode.parentNode.id
+        APIManager.remakeOrder(!this.props.order.remake, id)
+        .then((newOrder)=>{
+            this.setState({
+                order: newOrder
+            })
+
+        })
+    }
+
       deleteOrder = (id) => {
         APIManager.deleteData("orders", id)
         .then(() => {
@@ -71,6 +120,9 @@ export default class MainPage extends Component {
 
 
     render() {
+
+        const { orderStatus } = this.state
+
 
         if (this.state.role === "Optician") {
 
@@ -128,6 +180,7 @@ export default class MainPage extends Component {
                 </React.Fragment>
             )
         } else {
+
         return (
             <React.Fragment>
                 <Menu fixed='top' inverted>
@@ -160,12 +213,12 @@ export default class MainPage extends Component {
                         <Card.Group style={{ marginTop: '7em' }}>
                             {(this.state.search < 1)?
                                 this.state.orders.map(order =>
-                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                    <Order key={order.id} order={order} orderStatus={orderStatus} handleSelectChange={this.handleSelectChange} remakeOrder={this.remakeOrder} changeStatus={this.changeStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 ) :
                                 this.state.search.map(order =>
-                                    <Order key={order.id} order={order} changeOrderStatus={this.changeOrderStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                    <Order key={order.id} order={order} orderStatus={orderStatus} handleSelectChange={this.handleSelectChange} remakeOrder={this.remakeOrder} changeStatus={this.changeStatus} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}
                                     </Order>
                                 )
