@@ -17,6 +17,12 @@
       "password": "time",
       "role": "Lab Technician",
       "id": 3
+    },
+    {
+      "username": "hey",
+      "password": "you",
+      "role": "Lab Technician",
+      "id": 4
     }
   ],
   "orders": [
@@ -129,7 +135,7 @@
       "shipDate": "07-30-2018",
       "arrivalDate": "08-01-2018",
       "orderStatus": "Polishing",
-      "remake": false,
+      "remake": true,
       "frameName": "0154",
       "frameManufacturer": "Oakley",
       "frameMaterial": "Metal",
@@ -162,8 +168,8 @@
       "orderDate": "07-22-2018",
       "shipDate": "07-29-2018",
       "arrivalDate": "07-31-2018",
-      "orderStatus": "Tinting",
-      "remake": true,
+      "orderStatus": "Shipped",
+      "remake": false,
       "frameName": "Hampton",
       "frameManufacturer": "Garret Leight",
       "frameMaterial": "Zyl",
@@ -196,7 +202,7 @@
       "orderDate": "07-17-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Shipped",
+      "orderStatus": "Polishing",
       "remake": false,
       "frameName": "Lemtosh",
       "frameManufacturer": "Moscot",

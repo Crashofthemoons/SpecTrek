@@ -24,18 +24,19 @@ export default class Login extends Component {
                     this.setState({
                         id: user[0].id,
                         role: user[0].role,
-                        username: user[0].username                    })
+                        username: user[0].username
+                    })
                     localStorage.setItem("SpecTrek", JSON.stringify({
                         username: this.state.username,
                         id: this.state.id,
                         role: this.state.role
                     }))
-                    .then(() => {
-                        window.location.reload()
-                    })
                 } else {
                     alert("Invalid Username or Password Input. Please try again.")
                 }
+            })
+            .then(() => {
+                window.location.reload()
             })
     }
 
