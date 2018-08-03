@@ -23,6 +23,18 @@
       "password": "you",
       "role": "Lab Technician",
       "id": 4
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "role": "",
+      "id": 5
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "role": "",
+      "id": 6
     }
   ],
   "orders": [
@@ -66,7 +78,7 @@
       "orderDate": "07-25-2018",
       "shipDate": "08-01-2018",
       "arrivalDate": "08-03-2018",
-      "orderStatus": "Blocking",
+      "orderStatus": "Checked-In",
       "remake": false,
       "frameName": "Norton",
       "frameManufacturer": "Barton Perriera",
@@ -134,8 +146,8 @@
       "orderDate": "07-23-2018",
       "shipDate": "07-30-2018",
       "arrivalDate": "08-01-2018",
-      "orderStatus": "Polishing",
-      "remake": true,
+      "orderStatus": "Tinting",
+      "remake": false,
       "frameName": "0154",
       "frameManufacturer": "Oakley",
       "frameMaterial": "Metal",
@@ -168,7 +180,7 @@
       "orderDate": "07-22-2018",
       "shipDate": "07-29-2018",
       "arrivalDate": "07-31-2018",
-      "orderStatus": "Shipped",
+      "orderStatus": "Edging",
       "remake": false,
       "frameName": "Hampton",
       "frameManufacturer": "Garret Leight",
@@ -202,7 +214,7 @@
       "orderDate": "07-17-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Polishing",
+      "orderStatus": "Blocking",
       "remake": false,
       "frameName": "Lemtosh",
       "frameManufacturer": "Moscot",
@@ -236,7 +248,7 @@
       "orderDate": "07-22-2018",
       "shipDate": "07-29-2018",
       "arrivalDate": "07-31-2018",
-      "orderStatus": "Coating",
+      "orderStatus": "Blocking",
       "remake": false,
       "frameName": "Zev",
       "frameManufacturer": "Moscot",

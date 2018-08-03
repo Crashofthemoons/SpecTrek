@@ -29,15 +29,31 @@ export default class MainPage extends Component {
         })
       }
 
-      handleSelectChange = (e, { value }) => {
-        let id = e.currentTarget.parentNode.parentNode.parentNode.parentNode.id
+      handleSelectChange = (event, { value }) => {
+        let id = event.currentTarget.parentNode.parentNode.parentNode.parentNode.id
         // this.setState({ orderStatus: value })
         APIManager.changeStatus(value, id)
         .then(() => {
-            APIManager.getData("orders?_sort=orderDate&_order=asc")
-            .then(orders =>{
-              this.setState({orders: orders})
-            })
+            {(this.state.search < 1)?
+                APIManager.getData("orders?_sort=orderDate&_order=asc")
+                .then(orders =>{
+                    this.setState({orders: orders})
+                })
+                :
+                APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                .then(search =>{
+                    this.setState({search: search})
+                })
+
+            }
+          })
+          APIManager.getData(`orders/${id}`)
+          .then(order=>{
+                console.log("searched id", id)
+              if (order.orderStatus === "Shipped" && order.remake === true){
+                  console.log("change to green")
+                  APIManager.remakeOrder(!order.remake, id)
+              }
           })
 
           APIManager.getData(`orders/${id}`)
@@ -46,20 +62,6 @@ export default class MainPage extends Component {
               if (value === "Shipped" && order.remake === true){
                   console.log("change to green")
                   APIManager.remakeOrder(!order.remake, id)
-                // .then(() => {
-                //     APIManager.getData("orders?_sort=orderDate&_order=asc")
-                //     .then(orders =>{
-                //       this.setState({orders: orders})
-                //     })
-                //   })
-
-                  // APIManager.remakeOrder(!this.props.order.remake, e.currentTarget.parentNode.parentNode.parentNode.parentNode.id)
-                  // .then(() => {
-                  //     APIManager.getData("orders?_sort=orderDate&_order=asc")
-                  //     .then(orders =>{
-                  //       this.setState({orders: orders})
-                  //     })
-                  //   })
               }
           })
 
@@ -86,10 +88,18 @@ export default class MainPage extends Component {
                 console.log(order.remake)
                 APIManager.remakeOrder(!order.remake, id)
                 .then(() => {
-                    APIManager.getData("orders?_sort=orderDate&_order=asc")
-                    .then(orders =>{
-                      this.setState({orders: orders})
-                    })
+                    {(this.state.search < 1)?
+                        APIManager.getData("orders?_sort=orderDate&_order=asc")
+                        .then(orders =>{
+                            this.setState({orders: orders})
+                        })
+                        :
+                        APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                        .then(search =>{
+                            this.setState({search: search})
+                        })
+
+                    }
                   })
             })
     }
@@ -97,11 +107,19 @@ export default class MainPage extends Component {
       deleteOrder = (id) => {
         APIManager.deleteData("orders", id)
         .then(() => {
-          APIManager.getData("orders?_sort=orderDate&_order=asc")
-          .then(orders =>{
-            this.setState({orders: orders})
+            {(this.state.search < 1)?
+                APIManager.getData("orders?_sort=orderDate&_order=asc")
+                .then(orders =>{
+                    this.setState({orders: orders})
+                })
+                :
+                APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                .then(search =>{
+                    this.setState({search: search})
+                })
+
+            }
           })
-        })
       }
 
     searchBar = (event) => {
@@ -113,8 +131,8 @@ export default class MainPage extends Component {
                     search: SearchResults
                 })
             })
-            console.log(this.refs.search.inputRef.value)
-            this.refs.search.inputRef.value= ""
+            // console.log(this.refs.search.inputRef.value)
+            // this.refs.search.inputRef.value= ""
         }
     }
 
