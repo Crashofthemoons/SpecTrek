@@ -66,18 +66,6 @@ export default class MainPage extends Component {
 
     }
 
-    // changeStatus = (event) => {
-    //     console.log("status", this.state)
-    //     let id = event.currentTarget.parentNode.parentNode.id
-    //     let status= this.props.orderStatus
-    //     APIManager.changeStatus(status, id)
-    //     .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
-    //     .then(orders =>{
-    //       this.setState({
-    //           orders: orders
-    //         })
-    //     }))
-    // }
 
     remakeOrder = (event) =>{
         let id = event.currentTarget.parentNode.parentNode.id //current order id

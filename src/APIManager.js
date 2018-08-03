@@ -38,5 +38,14 @@ export default class APIManager {
                 remake: body
             })
         }).then(e=> e.json())
+    };
+    static editOrder = (body, id) => {
+        return fetch(`http://localhost:5002/orders/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(body)
+        })
     }
 }

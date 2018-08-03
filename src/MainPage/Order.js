@@ -50,7 +50,7 @@ export default class Order extends Component {
                         <Card.Description>{this.props.order.lensDesign} {this.props.order.lensMaterial} {this.props.order.lensCoating}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                        <div className='ui two buttons'>
+                        <div className='ui three buttons'>
                             <Button basic color='teal'>
                                 <Link
                                     to={{
@@ -58,6 +58,15 @@ export default class Order extends Component {
                                         state: this.props.order
                                     }}>
                                     Details
+                                </Link>
+                            </Button>
+                            <Button basic color='green'>
+                                <Link
+                                    to={{
+                                        pathname: "/order/editorder",
+                                        state: this.props.order
+                                    }}>
+                                    Edit
                                 </Link>
                             </Button>
                             <Button onClick={()=> this.props.deleteOrder(this.props.order.id)} basic color='red'>
