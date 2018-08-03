@@ -18,7 +18,7 @@ export default class MainPage extends Component {
     }
 
     componentDidMount() {
-        let cUser = JSON.parse(localStorage.getItem("SpecTrek"))
+        let cUser = JSON.parse(localStorage.getItem("SpecTrek")) //obtain current user info and all orders and print to the dom
         APIManager.getData("orders?_sort=orderDate&_order=asc")
         .then(orders =>{
           this.setState({
@@ -29,96 +29,101 @@ export default class MainPage extends Component {
         })
       }
 
-      handleSelectChange = (e, { value }) => {
-        let id = e.currentTarget.parentNode.parentNode.parentNode.parentNode.id
-        // this.setState({ orderStatus: value })
-        APIManager.changeStatus(value, id)
+      handleSelectChange = (event, { value }) => { //targeted event and drop-down value
+        let id = event.currentTarget.parentNode.parentNode.parentNode.parentNode.id //the id of the order being targeted
+        APIManager.changeStatus(value, id) //change order status in database
         .then(() => {
-            APIManager.getData("orders?_sort=orderDate&_order=asc")
-            .then(orders =>{
-              this.setState({orders: orders})
-            })
+            {(this.state.search < 1)?
+                APIManager.getData("orders?_sort=orderDate&_order=asc") //if this is on main page, then re-render main page orders
+                .then(orders =>{
+                    this.setState({orders: orders})
+                })
+                :
+                APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`) // if this is on search results, re-render search results
+                .then(search =>{
+                    this.setState({search: search})
+                })
+
+            }
+          })
+          APIManager.getData(`orders/${id}`) // get current order we are working with in searched results
+          .then(order=>{
+                console.log("searched id", id)
+              if (order.orderStatus === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
+                  console.log("change to green")
+                  APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green border
+              }
           })
 
-          APIManager.getData(`orders/${id}`)
+          APIManager.getData(`orders/${id}`) //get current order we are working with on main page
           .then(order=>{
 
-              if (value === "Shipped" && order.remake === true){
+              if (value === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
                   console.log("change to green")
-                  APIManager.remakeOrder(!order.remake, id)
-                // .then(() => {
-                //     APIManager.getData("orders?_sort=orderDate&_order=asc")
-                //     .then(orders =>{
-                //       this.setState({orders: orders})
-                //     })
-                //   })
-
-                  // APIManager.remakeOrder(!this.props.order.remake, e.currentTarget.parentNode.parentNode.parentNode.parentNode.id)
-                  // .then(() => {
-                  //     APIManager.getData("orders?_sort=orderDate&_order=asc")
-                  //     .then(orders =>{
-                  //       this.setState({orders: orders})
-                  //     })
-                  //   })
+                  APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green borde
               }
           })
 
     }
 
-    // changeStatus = (event) => {
-    //     console.log("status", this.state)
-    //     let id = event.currentTarget.parentNode.parentNode.id
-    //     let status= this.props.orderStatus
-    //     APIManager.changeStatus(status, id)
-    //     .then(APIManager.getData("orders?_sort=orderDate&_order=asc")
-    //     .then(orders =>{
-    //       this.setState({
-    //           orders: orders
-    //         })
-    //     }))
-    // }
 
     remakeOrder = (event) =>{
-        let id = event.currentTarget.parentNode.parentNode.id
+        let id = event.currentTarget.parentNode.parentNode.id //current order id
             console.log("remake", id)
             APIManager.getData(`orders/${id}`)
             .then(order=>{
                 console.log(order.remake)
-                APIManager.remakeOrder(!order.remake, id)
+                APIManager.remakeOrder(!order.remake, id) //toggle order remake boolean in database
                 .then(() => {
-                    APIManager.getData("orders?_sort=orderDate&_order=asc")
-                    .then(orders =>{
-                      this.setState({orders: orders})
-                    })
+                    {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
+                        APIManager.getData("orders?_sort=orderDate&_order=asc")
+                        .then(orders =>{
+                            this.setState({orders: orders})
+                        })
+                        :
+                        APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                        .then(search =>{
+                            this.setState({search: search})
+                        })
+
+                    }
                   })
             })
     }
 
       deleteOrder = (id) => {
-        APIManager.deleteData("orders", id)
+        APIManager.deleteData("orders", id) //deletes an order from the database
         .then(() => {
-          APIManager.getData("orders?_sort=orderDate&_order=asc")
-          .then(orders =>{
-            this.setState({orders: orders})
+            {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
+                APIManager.getData("orders?_sort=orderDate&_order=asc")
+                .then(orders =>{
+                    this.setState({orders: orders})
+                })
+                :
+                APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                .then(search =>{
+                    this.setState({search: search})
+                })
+
+            }
           })
-        })
       }
 
     searchBar = (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter") { //displays search results after enter key is pressed
 
-            APIManager.getData(`orders?q=${event.target.value}`)
-            .then(SearchResults => {
+            APIManager.getData(`orders?q=${event.target.value}`) //special api call that allows search
+            .then(SearchResults => { // reset state search: with results
                 this.setState({
                     search: SearchResults
                 })
             })
-            console.log(this.refs.search.inputRef.value)
-            this.refs.search.inputRef.value= ""
+            // console.log(this.refs.search.inputRef.value)
+            // this.refs.search.inputRef.value= ""
         }
     }
 
-    resetSearch = () => {
+    resetSearch = () => { //when you click on the spec Trek logo, it resets main page
         console.log("reset")
         this.setState({
             search: []
@@ -137,10 +142,10 @@ export default class MainPage extends Component {
 
     render() {
 
-        const { orderStatus } = this.state
+        const { orderStatus } = this.state //needed for the drop-down
 
 
-        if (this.state.role === "Optician") {
+        if (this.state.role === "Optician") { //this will display the optician mainpage view
 
             return (
                 <React.Fragment>
@@ -172,7 +177,7 @@ export default class MainPage extends Component {
                     <Grid>
                         <Grid.Column style={{ paddingRight: '0' }} width={14}>
                             <Card.Group style={{ marginTop: '7em' }}>
-                                {(this.state.search < 1)?
+                                {(this.state.search < 1)? //this will display search results if something has been typed in the search bar
                                     this.state.orders.map(order =>
                                         <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                             {order}
@@ -195,7 +200,7 @@ export default class MainPage extends Component {
                     </Grid>
                 </React.Fragment>
             )
-        } else {
+        } else { //displays the Tech's main page
 
         return (
             <React.Fragment>
@@ -227,7 +232,7 @@ export default class MainPage extends Component {
                 <Grid>
                     <Grid.Column style={{ paddingRight: '0' }} width={14}>
                         <Card.Group style={{ marginTop: '7em' }}>
-                            {(this.state.search < 1)?
+                            {(this.state.search < 1)? //displays search results if any
                                 this.state.orders.map(order =>
                                     <Order key={order.id} order={order} orderStatus={orderStatus} handleSelectChange={this.handleSelectChange} remakeOrder={this.remakeOrder} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
                                         {order}

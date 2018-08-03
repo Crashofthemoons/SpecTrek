@@ -39,22 +39,22 @@ export default class NewOrder extends Component {
         ocsegOs: ""
     }
 
-    handleSelectChange = (e, { value }) => {
+    handleSelectChange = (e, { value }) => { //handles field change for the drop-downs
         console.log(e.target.id)
         this.setState({ [e.target.id]: value })
     }
 
-    handleFieldChange = event => {
+    handleFieldChange = event => { //handles field change for inputs
         const stateToChange = {};
         stateToChange[event.target.id] = event.target.value;
         this.setState(stateToChange);
     };
 
-    back = () => {
+    back = () => { //back button
         this.props.history.push("/")
     }
 
-    componentDidMount = () => {
+    componentDidMount = () => { // presets the order date, ship date and arrival date into state
         let dateObj = new Date();
         let weekOut = new Date()
         let arrival = new Date()
@@ -86,7 +86,7 @@ export default class NewOrder extends Component {
     addNewOrder = () => {
         let order= this.state
         console.log("adding Order")
-        APIManager.addData("orders", order)
+        APIManager.addData("orders", order) //takes state and adds new order into database, then sends you back to main page
         .then(() => this.props.history.push("/"))
     }
 
@@ -95,7 +95,7 @@ export default class NewOrder extends Component {
 render() {
 
 
-    const { lensMaterial } = this.state
+    const { lensMaterial } = this.state //these are needed for drop down selections
     const { lensCoating } = this.state
     const { tint } = this.state
     const { lensDesign } = this.state
