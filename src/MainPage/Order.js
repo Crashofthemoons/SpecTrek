@@ -6,13 +6,11 @@ import OrderDetails from "./OrderDetails"
 
 export default class Order extends Component {
 
-    // state = {
-    //     order: {...this.props.order}
-    // }
+
 
     render() {
 
-        if ( this.props.role === "Optician") {
+        if ( this.props.role === "Optician") { // shows optician actions on each order card
             // console.log("optician")
             let thisOrder
             let dateObj = new Date()
