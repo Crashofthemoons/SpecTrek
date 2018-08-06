@@ -12,60 +12,27 @@ export default class EditOrder extends Component {
     handleSelectChange = (e, { value }) => { //handles field change for the drop-downs
         const stateToChange = Object.assign({}, this.state.order)
         stateToChange[e.target.id] = value
-        console.log(e.target.id)
+        // console.log(e.target.id)
         this.setState({ order: stateToChange })
     }
 
-    // handleFieldChange = event => { //handles field change for inputs
-    //     const stateToChange = {};
-    //     stateToChange[event.target.id] = event.target.value;
-    //     this.setState(stateToChange);
-    // };
 
     handleFieldChange = (evt) => {
         const stateToChange = Object.assign({}, this.state.order)
 
         stateToChange[evt.target.id] = evt.target.value
         this.setState({order: stateToChange})
-        console.log(stateToChange)
+        // console.log(stateToChange)
     }
 
     back = () => { //back button
         this.props.history.push("/")
     }
 
-    // componentDidMount = () => { // presets the order date, ship date and arrival date into state
-    //     let dateObj = new Date();
-    //     let weekOut = new Date()
-    //     let arrival = new Date()
-    //     weekOut.setDate(weekOut.getDate() +7)
-    //     arrival.setDate(arrival.getDate() + 9)
-
-    //     let month = dateObj.getMonth() + 1;
-    //     let day = dateObj.getDate();
-    //     let year = dateObj.getFullYear();
-    //     let newDate = month + "/" + day + "/" + year
-
-    //     let shipMonth = weekOut.getMonth() +1
-    //     let shipDay = weekOut.getDate()
-    //     let shipYear = weekOut.getFullYear()
-    //     let shippingDate = shipMonth + "/" + shipDay + "/" + shipYear
-
-    //     let arrivalMonth = arrival.getMonth() + 1
-    //     let arrivalDay = arrival.getDate()
-    //     let arrivalYear = arrival.getFullYear()
-    //     let arrivalDate = arrivalMonth + "/" + arrivalDay + "/" + arrivalYear
-
-    //     this.setState({
-    //         orderDate: newDate,
-    //         shipDate: shippingDate,
-    //         arrivalDate: arrivalDate
-    //      })
-    // }
 
     editOrder = () => {
         let order= this.state.order
-        console.log("editOrder", this.state.order )
+        // console.log("editOrder", this.state.order )
         APIManager.editOrder(order, this.state.order.id) //takes state and edits order in database, then sends you back to main page
         .then(() => this.props.history.push("/"))
     }

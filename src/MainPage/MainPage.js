@@ -29,6 +29,13 @@ export default class MainPage extends Component {
         })
       }
 
+      changeView = () =>{
+        // console.log('change view')
+        this.setState({
+            orders: this.state.orders.reverse()
+        })
+      }
+
       handleSelectChange = (event, { value }) => { //targeted event and drop-down value
         let id = event.currentTarget.parentNode.parentNode.parentNode.parentNode.id //the id of the order being targeted
         APIManager.changeStatus(value, id) //change order status in database
@@ -48,9 +55,8 @@ export default class MainPage extends Component {
           })
           APIManager.getData(`orders/${id}`) // get current order we are working with in searched results
           .then(order=>{
-                console.log("searched id", id)
+                // console.log("searched id", id)
               if (order.orderStatus === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
-                  console.log("change to green")
                   APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green border
               }
           })
@@ -59,7 +65,6 @@ export default class MainPage extends Component {
           .then(order=>{
 
               if (value === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
-                  console.log("change to green")
                   APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green borde
               }
           })
@@ -69,7 +74,7 @@ export default class MainPage extends Component {
 
     remakeOrder = (event) =>{
         let id = event.currentTarget.parentNode.parentNode.id //current order id
-            console.log("remake", id)
+            // console.log("remake", id)
             APIManager.getData(`orders/${id}`)
             .then(order=>{
                 console.log(order.remake)
@@ -118,13 +123,13 @@ export default class MainPage extends Component {
                     search: SearchResults
                 })
             })
-            // console.log(this.refs.search.inputRef.value)
+            // console.log(this.refs.search.inputRef.value) //if you want the search bar to clear when you press enter
             // this.refs.search.inputRef.value= ""
         }
     }
 
     resetSearch = () => { //when you click on the spec Trek logo, it resets main page
-        console.log("reset")
+        // console.log("reset")
         this.setState({
             search: []
         })
@@ -162,6 +167,9 @@ export default class MainPage extends Component {
                                 }}>
                                 New Order
                             </Link>
+                        </Menu.Item>
+                        <Menu.Item onClick={this.changeView}>
+                            Change Order Display
                         </Menu.Item>
                         <Input ref="search" id="search" style={{ marginLeft: '3em' }} onKeyPress={this.searchBar} transparent inverted placeholder='Search...'/>
                         <Menu.Menu position="right">
@@ -218,6 +226,9 @@ export default class MainPage extends Component {
                             New Order
                         </Link>
                     </Menu.Item> */}
+                    <Menu.Item onClick={this.changeView}>
+                        Change Order Display
+                    </Menu.Item>
                     <Input ref="search" id="search" style={{ marginLeft: '3em' }} onKeyPress={this.searchBar} transparent inverted placeholder='Search...'/>
                     <Menu.Menu position="right">
                         <Menu.Item>
