@@ -1,11 +1,11 @@
 Create a new repository
 
 run:
-npm insall
+### `npm install`
 inside of root repository.
 
 run:
-json-server -p 5002 -w  database.json
+### `json-server -p 5002 -w  database.json`
 inside of root repository to acess the database.
 
 To register as an Optician:
