@@ -142,12 +142,6 @@ export default class Order extends Component {
                                 </Link>
                             </Button>
                             <Select compact id="orderStatus" onChange={this.props.handleSelectChange} options={status} placeholder='Status' width={2} value={this.props.orderStatus} />
-                            {/* <Popup
-                                trigger={<Button color='green' onClick={this.props.changeStatus} size="mini" icon='check circle outline' />}
-                                content={"Submit Order Status"}
-                                on="hover"
-                                position='top right'
-                            /> */}
                             <Popup
                                 trigger={<Button color='red' onClick={this.props.remakeOrder} size="mini" icon='redo' />}
                                 content={"Remake"}

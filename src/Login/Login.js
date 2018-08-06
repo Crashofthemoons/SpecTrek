@@ -63,7 +63,7 @@ export default class Login extends Component {
     }
 
     handleSelectChange = (e, { value }) => {
-        console.log(e.target.id)
+        // console.log(e.target.id)
         this.setState({ [e.target.id]: value })
     }
 

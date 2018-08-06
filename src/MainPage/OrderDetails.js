@@ -26,7 +26,7 @@ export default class OrderDetails extends Component {
                     <Divider inverted />
                     <Segment.Group horizontal>
                         <Segment inverted color='#fff'>{this.props.order.dr}</Segment>
-                        <Segment inverted color='#fff'>Optician: {this.props.order.user}</Segment>
+                        <Segment inverted color='#fff'>Optician: {this.props.order.username}</Segment>
                     </Segment.Group>
                     <Divider inverted />
                     <Segment.Group>

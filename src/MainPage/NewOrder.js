@@ -40,7 +40,7 @@ export default class NewOrder extends Component {
     }
 
     handleSelectChange = (e, { value }) => { //handles field change for the drop-downs
-        console.log(e.target.id)
+        // console.log(e.target.id)
         this.setState({ [e.target.id]: value })
     }
 
@@ -85,7 +85,7 @@ export default class NewOrder extends Component {
 
     addNewOrder = () => {
         let order= this.state
-        console.log("adding Order")
+        // console.log("adding Order")
         APIManager.addData("orders", order) //takes state and adds new order into database, then sends you back to main page
         .then(() => this.props.history.push("/"))
     }
