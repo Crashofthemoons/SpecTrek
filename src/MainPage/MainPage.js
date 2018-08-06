@@ -55,7 +55,7 @@ export default class MainPage extends Component {
           })
           APIManager.getData(`orders/${id}`) // get current order we are working with in searched results
           .then(order=>{
-                // console.log("searched id", id)
+                console.log("searched id", order.orderStatus)
               if (order.orderStatus === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
                   APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green border
               }
@@ -65,7 +65,7 @@ export default class MainPage extends Component {
           .then(order=>{
 
               if (value === "Shipped" && order.remake === true){ //if the orders status is "shipped" and it is remade,
-                  APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green borde
+                  APIManager.remakeOrder(!order.remake, id) //then change remake boolean to false, to allow green border
               }
           })
 
@@ -79,6 +79,9 @@ export default class MainPage extends Component {
             .then(order=>{
                 console.log(order.remake)
                 APIManager.remakeOrder(!order.remake, id) //toggle order remake boolean in database
+                .then(()=> {
+                    APIManager.changeStatus("Blocking", id)
+                })
                 .then(() => {
                     {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
                         APIManager.getData("orders?_sort=orderDate&_order=asc")
