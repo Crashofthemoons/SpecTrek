@@ -19,8 +19,9 @@ export default class MainPage extends Component {
 
     componentDidMount() {
         let cUser = JSON.parse(localStorage.getItem("SpecTrek")) //obtain current user info and all orders and print to the dom
-        APIManager.getData("orders?_sort=orderDate&_order=asc")
+        APIManager.getData("orders?_expand=user&sort=orderDate&_order=asc")
         .then(orders =>{
+            console.log(orders)
           this.setState({
               orders: orders,
               currentUser: cUser.id,
