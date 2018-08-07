@@ -5,6 +5,11 @@ body {
   margin-left: 2em;
 }
 
+#details {
+  font-size: 1.3em;
+  line-height: 35px;
+}
+
 .App {
   text-align: center;
 }
@@ -22,7 +27,7 @@ body {
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .App-intro {
@@ -84,4 +89,40 @@ body {
 
 .ui.card>.extra, .ui.cards>.card>.extra {
   padding: .5em !important;
+}
+
+.ui.horizontal.segments>.segment.submitted {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.checkedIn {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.tinting {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.blocking {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.edging {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.polishing {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.coating {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.mounting {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.verification {
+  border: 8px solid #62ADC2;
 }
