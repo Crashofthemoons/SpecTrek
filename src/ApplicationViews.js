@@ -13,20 +13,12 @@ import Search from "./MainPage/Search"
 import EditOrder from "./MainPage/EditOrder"
 
 
+
 class ApplicationViews extends Component {
   state = {
     currentUser: ""
   }
 
-
-
-  // updateOrders() {
-  //   APIManager.getData("orders?_sort=orderDate&_order=asc")
-  //   .then(orders =>{
-  //     console.log(orders)
-  //     // this.setState({orders: orders})
-  //   })
-  // }
 
   isAuthenticated = () =>
     localStorage.getItem("SpecTrek") !== null ||
@@ -40,7 +32,7 @@ class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <MainPage {...props} />
           } else {
-            return <Login />
+            return <Login /> //will need to change path if using auth0
           }
         }} />
         <Route exact path="/order" render={(props) => {

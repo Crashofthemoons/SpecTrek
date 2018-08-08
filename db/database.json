@@ -71,6 +71,24 @@
       "password": "BLUEEEEEEEE",
       "role": "Optician",
       "id": 12
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "role": "",
+      "id": 13
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "role": "",
+      "id": 14
+    },
+    {
+      "username": "Jenn Lawson",
+      "password": "time",
+      "role": "",
+      "id": 15
     }
   ],
   "orders": [
@@ -114,7 +132,7 @@
       "orderDate": "07-24-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Shipped",
+      "orderStatus": "Edging",
       "remake": false,
       "frameName": "3005",
       "frameManufacturer": "GANT",
@@ -148,7 +166,7 @@
       "orderDate": "07-23-2018",
       "shipDate": "07-30-2018",
       "arrivalDate": "08-01-2018",
-      "orderStatus": "Polishing",
+      "orderStatus": "Coating",
       "remake": false,
       "frameName": "0154",
       "frameManufacturer": "Oakley",
@@ -216,8 +234,8 @@
       "orderDate": "07-17-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Blocking",
-      "remake": false,
+      "orderStatus": "Coating",
+      "remake": true,
       "frameName": "Lemtosh",
       "frameManufacturer": "Moscot",
       "frameMaterial": "Zyl",
@@ -250,8 +268,8 @@
       "orderDate": "07-22-2018",
       "shipDate": "07-29-2018",
       "arrivalDate": "07-31-2018",
-      "orderStatus": "Blocking",
-      "remake": true,
+      "orderStatus": "Verification",
+      "remake": false,
       "frameName": "Zev",
       "frameManufacturer": "Moscot",
       "frameMaterial": "Metal",
@@ -277,6 +295,40 @@
       "ocsegOd": "17",
       "ocsegOs": "17",
       "id": 7
+    },
+    {
+      "userId": 1,
+      "patientName": "Darren Mittermeier",
+      "orderDate": "8/8/2018",
+      "shipDate": "8/15/2018",
+      "arrivalDate": "8/17/2018",
+      "orderStatus": "Submitted",
+      "remake": false,
+      "frameName": "Hampton",
+      "frameManufacturer": "Garrett Leight",
+      "frameMaterial": "Zyl",
+      "a": "46",
+      "b": "46",
+      "dbl": "22",
+      "ed": "46",
+      "temple": "145",
+      "dr": "Dr. Frankenstein",
+      "lensMaterial": "Trivex",
+      "lensCoating": "EX3",
+      "tint": "",
+      "lensDesign": "SV",
+      "sphereOd": "-1.50",
+      "sphereOs": "-1.25",
+      "cylOd": "-2.00",
+      "cylOs": "-1.75",
+      "axisOd": "090",
+      "axisOs": "087",
+      "add": "",
+      "pdOd": "29",
+      "pdOs": "29",
+      "ocsegOd": "29",
+      "ocsegOs": "29",
+      "id": 8
     }
   ]
 }

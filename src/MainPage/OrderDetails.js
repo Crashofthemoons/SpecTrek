@@ -102,7 +102,7 @@ export default class OrderDetails extends Component {
                 <Card.Content>
                     <Card.Header>Patient Name: {this.props.order.patientName}</Card.Header>
                     <Card.Meta>{this.props.order.dr}</Card.Meta>
-                    <Card.Meta>Optician: {this.props.order.user.username}</Card.Meta>
+                    <Card.Meta>Optician: {this.props.order.user}</Card.Meta>
                     <Card.Description>Lab Status: {this.props.order.orderStatus}</Card.Description>
                     <Card.Description>{this.props.order.lensDesign} {this.props.order.lensMaterial} {this.props.order.lensCoating} {this.props.order.tint}</Card.Description>
                 </Card.Content>
