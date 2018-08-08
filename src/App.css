@@ -126,3 +126,67 @@ body {
 .ui.horizontal.segments>.segment.verification {
   border: 8px solid #62ADC2;
 }
+
+.ui.horizontal.segments>.segment.checkedIn-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.tinting-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.blocking-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.edging-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.polishing-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.coating-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.mounting-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.verification-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.checkedIn-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.tinting-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.blocking-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.edging-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.polishing-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.coating-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.mounting-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.verification-late {
+  border: 8px solid #F6E45B;
+}
