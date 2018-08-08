@@ -1,4 +1,4 @@
-![Login page](Users/jenn/workspace/spec-trek/Screen Shot 2018-08-08 at 1.19.04 PM.png)
+![Login page](/Users/jenn/workspace/spec-trek/Screen Shot 2018-08-08 at 1.19.04 PM.png)
 
 
 
