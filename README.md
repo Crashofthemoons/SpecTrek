@@ -1,4 +1,4 @@
-![Login page](/pics/Screen Shot 2018-08-08 at 1.19.04 PM.png)
+![Login page](pics/Screen Shot 2018-08-08 at 1.19.04 PM.png)
 
 
 
