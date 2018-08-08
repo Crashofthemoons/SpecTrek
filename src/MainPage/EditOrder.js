@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { Button, Form, Label, Divider, Menu, Image } from 'semantic-ui-react'
+import { Button, Form, Label, Card, Menu, Image } from 'semantic-ui-react'
 import APIManager from "../APIManager"
 
 export default class EditOrder extends Component {
@@ -92,7 +92,9 @@ render() {
                             Spec Trek
                         </Menu.Item>
             </Menu>
-            <Form style={{ marginTop: '7em' }}>
+            <Card.Group id="details" style={{margin: '100px'}}>
+            <Card style={{padding: '5px'}} fluid>
+            <Form>
                 <Form.Group>
                     <Form.Input value={this.state.order.patientName} id="patientName" onChange={this.handleFieldChange} label='Patient name' placeholder='Patient Name' width={6} />
                     <Form.Input value={this.state.order.dr} id="dr" onChange={this.handleFieldChange} label='Doctor' placeholder='Doctor' width={6} />
@@ -137,12 +139,14 @@ render() {
                     <Form.Input id="temple" value={this.state.order.temple} onChange={this.handleFieldChange} placeholder='Temple' width={3} />
                 </Form.Group>
             </Form>
+            </Card>
             <Button basic color='red' onClick={this.back}>
                 Back
                 </Button>
             <Button basic color='teal' onClick={this.editOrder}>
                 Submit
                 </Button>
+            </Card.Group>
         </React.Fragment>
     )
 }

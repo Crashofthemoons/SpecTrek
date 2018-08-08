@@ -1,8 +1,13 @@
 body {
-  background-image: url(https://media.giphy.com/media/FlodpfQUBSp20/giphy.gif);
+  background-image: url(https://st3.depositphotos.com/1003409/18994/v/600/depositphotos_189942432-stock-video-space-travelling-the-speed-of.jpg);
   background-repeat: round;
   background-position: right top;
   margin-left: 2em;
+}
+
+#details {
+  font-size: 1.3em;
+  line-height: 35px;
 }
 
 .App {
@@ -22,7 +27,7 @@ body {
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .App-intro {
@@ -84,4 +89,104 @@ body {
 
 .ui.card>.extra, .ui.cards>.card>.extra {
   padding: .5em !important;
+}
+
+.ui.horizontal.segments>.segment.submitted {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.checkedIn {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.tinting {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.blocking {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.edging {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.polishing {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.coating {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.mounting {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.verification {
+  border: 8px solid #62ADC2;
+}
+
+.ui.horizontal.segments>.segment.checkedIn-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.tinting-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.blocking-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.edging-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.polishing-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.coating-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.mounting-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.verification-remake {
+  border: 8px solid #F87026;
+}
+
+.ui.horizontal.segments>.segment.checkedIn-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.tinting-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.blocking-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.edging-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.polishing-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.coating-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.mounting-late {
+  border: 8px solid #F6E45B;
+}
+
+.ui.horizontal.segments>.segment.verification-late {
+  border: 8px solid #F6E45B;
 }
