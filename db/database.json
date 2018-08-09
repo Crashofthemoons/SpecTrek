@@ -17,84 +17,6 @@
       "password": "time",
       "role": "Lab Technician",
       "id": 3
-    },
-    {
-      "username": "hey",
-      "password": "you",
-      "role": "Lab Technician",
-      "id": 4
-    },
-    {
-      "username": "Jenn Lawson",
-      "password": "time",
-      "role": "",
-      "id": 5
-    },
-    {
-      "username": "Jenn Lawson",
-      "password": "time",
-      "role": "",
-      "id": 6
-    },
-    {
-      "username": "Robert-Duvall",
-      "password": "glasses",
-      "role": "",
-      "id": 7
-    },
-    {
-      "username": "Brett",
-      "password": "Brett",
-      "role": "",
-      "id": 8
-    },
-    {
-      "username": "Brett",
-      "password": "Brett",
-      "role": "Optician",
-      "id": 9
-    },
-    {
-      "username": "brett ",
-      "password": "brett",
-      "role": "Lab Technician",
-      "id": 10
-    },
-    {
-      "username": "brett",
-      "password": "chandler",
-      "role": "Lab Technician",
-      "id": 11
-    },
-    {
-      "username": "BOBBY",
-      "password": "BLUEEEEEEEE",
-      "role": "Optician",
-      "id": 12
-    },
-    {
-      "username": "Jenn Lawson",
-      "password": "time",
-      "role": "",
-      "id": 13
-    },
-    {
-      "username": "Jenn Lawson",
-      "password": "time",
-      "role": "",
-      "id": 14
-    },
-    {
-      "username": "Jenn Lawson",
-      "password": "time",
-      "role": "",
-      "id": 15
-    },
-    {
-      "username": "Robert-Duvall",
-      "password": "glasses",
-      "role": "",
-      "id": 16
     }
   ],
   "orders": [
@@ -138,7 +60,7 @@
       "orderDate": "07-24-2018",
       "shipDate": "07-31-2018",
       "arrivalDate": "08-02-2018",
-      "orderStatus": "Edging",
+      "orderStatus": "Verification",
       "remake": false,
       "frameName": "3005",
       "frameManufacturer": "GANT",
@@ -308,7 +230,7 @@
       "orderDate": "8/8/2018",
       "shipDate": "8/15/2018",
       "arrivalDate": "8/17/2018",
-      "orderStatus": "Submitted",
+      "orderStatus": "Checked-In",
       "remake": false,
       "frameName": "Hampton",
       "frameManufacturer": "Garrett Leight",
