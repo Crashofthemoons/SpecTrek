@@ -19,7 +19,7 @@ export default class MainPage extends Component {
 
     componentDidMount() {
         let cUser = JSON.parse(localStorage.getItem("SpecTrek")) //obtain current user info and all orders and print to the dom
-        APIManager.getData("orders?_sort=orderDate&_order=asc") //orders?_expand=user&sort=orderDate&_order=asc
+        APIManager.getData("orders?_sort=orderDate&_order=asc&_expand=user") //orders?_expand=user&sort=orderDate&_order=asc
         .then(orders =>{
             console.log(orders)
           this.setState({
@@ -42,7 +42,7 @@ export default class MainPage extends Component {
         APIManager.changeStatus(value, id) //change order status in database
         .then(() => {
             {(this.state.search < 1)?
-                APIManager.getData("orders?_sort=orderDate&_order=asc") //if this is on main page, then re-render main page orders
+                APIManager.getData("orders?_sort=orderDate&_order=asc&_expand=user") //if this is on main page, then re-render main page orders
                 .then(orders =>{
                     this.setState({orders: orders})
                 })
@@ -85,7 +85,7 @@ export default class MainPage extends Component {
                 })
                 .then(() => {
                     {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
-                        APIManager.getData("orders?_sort=orderDate&_order=asc")
+                        APIManager.getData("orders?_sort=orderDate&_order=asc&_expand=user")
                         .then(orders =>{
                             this.setState({orders: orders})
                         })
@@ -104,7 +104,7 @@ export default class MainPage extends Component {
         APIManager.deleteData("orders", id) //deletes an order from the database
         .then(() => {
             {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
-                APIManager.getData("orders?_sort=orderDate&_order=asc")
+                APIManager.getData("orders?_sort=orderDate&_order=asc&_expand=user")
                 .then(orders =>{
                     this.setState({orders: orders})
                 })
