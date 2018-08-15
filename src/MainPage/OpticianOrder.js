@@ -35,6 +35,7 @@ export default class OpticianOrder extends Component {
                 <Card id={this.props.order.id} className={thisOrder}>
                     <Card.Content>
                         {/* <Image floated='right' size='mini' src='/images/avatar/large/steve.jpg' /> */}
+                        <Button style={{margin: "-13px"}} floated="right" color="red" basic size="mini" icon="times"onClick={()=> this.props.deleteOrder(this.props.order.id)}/>
                         <Card.Header>{this.props.order.patientName}</Card.Header>
                         <Label ribbon="right" color="grey" floated="right" >{this.props.order.orderStatus}</Label>
                         <Card.Meta>Order Date: {this.props.order.orderDate}</Card.Meta>
@@ -64,8 +65,8 @@ export default class OpticianOrder extends Component {
                                     Edit
                                 </Link>
                             </Button>
-                            <Button onClick={()=> this.props.deleteOrder(this.props.order.id)} basic color='red'>
-                                Delete
+                            <Button onClick={()=> this.props.archiveOrder(this.props.order.id)} basic color='blue'>
+                                Received
                             </Button>
                         </div>
                     </Card.Content>

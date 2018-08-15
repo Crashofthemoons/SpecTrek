@@ -14,7 +14,7 @@ export default class Order extends Component {
 
         return (
             <React.Fragment>
-                <OpticianOrder key={this.props.order.id} order={this.props.order} role={this.props.role} currentUser={this.props.currentUser} deleteOrder={this.props.deleteOrder}/>
+                <OpticianOrder key={this.props.order.id} order={this.props.order} role={this.props.role} currentUser={this.props.currentUser} deleteOrder={this.props.deleteOrder} archiveOrder={this.props.archiveOrder}/>
             </React.Fragment>
         )
 
