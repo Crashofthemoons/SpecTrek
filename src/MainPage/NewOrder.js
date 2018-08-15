@@ -162,7 +162,7 @@ render() {
                 </Form.Group>
                 <Form.Group>
                 {/* <Label horizontal>OD:</Label> */}
-                    <Form.Input id="sphereOd" type="number" onChange={this.handleFieldChange} placeholder='OD Sphere' width={2} />
+                    <Form.Input id="sphereOd" onChange={this.handleFieldChange} placeholder='OD Sphere' width={2} />
                     <Form.Input id="cylOd" onChange={this.handleFieldChange} placeholder='OD Cylinder' width={2} />
                     <Form.Input id="axisOd" onChange={this.handleFieldChange} placeholder='OD Axis' width={2} />
                     <Form.Input id="add" onChange={this.handleFieldChange} placeholder='OD Add' width={2} />

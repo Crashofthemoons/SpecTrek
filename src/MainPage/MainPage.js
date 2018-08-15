@@ -118,6 +118,31 @@ export default class MainPage extends Component {
           })
       }
 
+      archiveOrder = (id) => {
+          console.log(id)
+          APIManager.getData(`orders/${id}`)
+          .then(order =>{
+              APIManager.addData("archive", order)
+            })
+            .then(() =>{
+                APIManager.deleteData("orders", id)
+                .then(() => {
+                  {(this.state.search < 1)? //checks if we are looking at main page or search results and resets state accordingly
+                      APIManager.getData("orders?_sort=orderDate&_order=asc&_expand=user")
+                      .then(orders =>{
+                          this.setState({orders: orders})
+                      })
+                      :
+                      APIManager.getData(`orders?q=${this.refs.search.inputRef.value}`)
+                      .then(search =>{
+                          this.setState({search: search})
+                      })
+
+                  }
+                })
+            })
+      }
+
     searchBar = (event) => {
         if (event.key === "Enter") { //displays search results after enter key is pressed
 
@@ -191,12 +216,12 @@ export default class MainPage extends Component {
                             <Card.Group style={{ marginTop: '7em' }}>
                                 {(this.state.search < 1)? //this will display search results if something has been typed in the search bar
                                     this.state.orders.map(order =>
-                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder} archiveOrder={this.archiveOrder}>
                                             {order}
                                         </Order>
                                     ) :
                                     this.state.search.map(order =>
-                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder}>
+                                        <Order key={order.id} order={order} role={this.state.role} currentUser={this.currentUser} deleteOrder={this.deleteOrder} archiveOrder={this.archiveOrder}>
                                             {order}
                                         </Order>
                                     )
