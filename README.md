@@ -2,6 +2,8 @@
 
 This is my Front-End Capstone for Nashville Software School.
 
+http://spec-trek.s3-website.us-east-2.amazonaws.com
+
 ![](pics/login.png)
 
 # Tools:
