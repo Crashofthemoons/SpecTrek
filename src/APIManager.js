@@ -1,10 +1,12 @@
+
+const endpoint = "https://spec-trek.herokuapp.com/"
 export default class APIManager {
     static getData = section => {
-        return fetch(`http://localhost:5002/${section}`).then(e => e.json());
+        return fetch(`${endpoint}${section}`).then(e => e.json());
     };
 
     static addData = (section, body) => {
-        return fetch(`http://localhost:5002/${section}`, {
+        return fetch(`${endpoint}${section}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -13,12 +15,12 @@ export default class APIManager {
         });
     };
     static deleteData = (section, id) => {
-        return fetch(`http://localhost:5002/${section}/${id}`, {
+        return fetch(`${endpoint}${section}/${id}`, {
             method: "DELETE"
         })
     };
     static changeStatus = (body, id) => {
-        return fetch(`http://localhost:5002/orders/${id}`, {
+        return fetch(`${endpoint}orders/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -29,7 +31,7 @@ export default class APIManager {
         }).then(e => e.json())
     };
     static remakeOrder = (body, id) => {
-        return fetch(`http://localhost:5002/orders/${id}`, {
+        return fetch(`${endpoint}orders/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
@@ -40,7 +42,7 @@ export default class APIManager {
         }).then(e=> e.json())
     };
     static editOrder = (body, id) => {
-        return fetch(`http://localhost:5002/orders/${id}`, {
+        return fetch(`${endpoint}orders/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
